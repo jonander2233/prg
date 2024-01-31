@@ -86,7 +86,7 @@ public class Eys {
     }
 
 
-
+//comentario
 // variable = Integer.parseint(lector.nextLine());
 // variable = Double.parseDouble(lector.nextLine());
 }
