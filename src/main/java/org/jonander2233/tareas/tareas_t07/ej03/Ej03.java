@@ -7,8 +7,8 @@ public class Ej03 {
     public static void ej03(){
         String [] opcionesMenu1 = new String[]{"Nuevo alumno","Baja de alumno","Consultas"};
         String [] opcionesMenu2 = new String[]{"Por grupo","Por edad","Por nia","Por apellidos"};
-        int respuestamenu1=0;
-        int respuestamenu2=0;
+        int respuestamenu1 = 0;
+        int respuestamenu2 = 0;
         do{
             respuestamenu1 = Menu.mostrar("GESTION ALUMNOS",opcionesMenu1);
             switch (respuestamenu1){
@@ -21,6 +21,9 @@ public class Ej03 {
                 case 3:
                     do{
                     respuestamenu2 = Menu.mostrar("CONSULTAS",opcionesMenu2);
+                    switch (respuestamenu2){
+
+                    }
 
                     }while (respuestamenu2!=0);
                     break;
