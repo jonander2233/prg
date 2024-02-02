@@ -14,8 +14,10 @@ public class Punto {
         this.y = y;
     }
     public double distancia (Punto posicion){
+        double diferenciaX = posicion.getX() - this.x;
+        double diferenciaY = posicion.getY() - this.y;
 
-        return 0;
+        return Math.sqrt(diferenciaX * diferenciaX + diferenciaY * diferenciaY);
     }
 
     public double getX() {

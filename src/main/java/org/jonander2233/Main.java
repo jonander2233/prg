@@ -1,8 +1,8 @@
 package org.jonander2233;
-import org.jonander2233.tareas.tareas_t07.ej03.Ej03;
+import org.jonander2233.tareas.tareas_t07.ej04.Ej04;
 
 public class Main {
     public static void main(String[] args) {
-        Ej03.ej03();
+        Ej04.ej04();
     }
 }
