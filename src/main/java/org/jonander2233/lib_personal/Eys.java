@@ -42,13 +42,35 @@ public class Eys {
         char caracter = texto.charAt(0);
         return caracter;
     }
+    public static boolean ImprimirYleerCharSN(String texto){
+        char respuesta;
+        boolean respuestaBool=false;
+        System.out.println(texto+" S/N");
+        do {
+            respuesta = Eys.leerChar();
+            if (respuesta == 'S' || respuesta == 's') {
+                respuestaBool = true;
+            } else if (respuesta == 'N' || respuesta == 'n') {
+                respuestaBool = false;
+            } else {
+                Eys.imprimir("Por favor, ingrese S o N.");
+            }
+        } while (respuesta != 'S' && respuesta != 's' && respuesta != 'N' && respuesta != 'n');
+        return respuestaBool;
+    }
     // --------------------------String--------------------------------------------------------
     public static void imprimir(String texto){
         System.out.println(texto);
     }
-    public static String imprimirYLeer(String texto){
-        System.out.println(texto);
-        String respuesta = lector.nextLine();
+    public static String imprimirYLeer(String texto,int min, int max){
+        String respuesta;
+        do {
+            System.out.println(texto);
+            respuesta = lector.nextLine();
+            if (respuesta.length() < min || respuesta.length() > max){
+                System.out.println("Respuesta invalida");
+            }
+        }while (respuesta.length() > max  || respuesta.length() < min );
         return respuesta;
     }
     // --------------------------Arrays--------------------------------------------------------

@@ -6,11 +6,11 @@ public class Menu {
         int opcion;
         do {
             System.out.println("*********************");
-            System.out.println("**" + titulo + "**");
+            System.out.println("****" + titulo + "****");
             System.out.println("*********************");
             for (int i = 0; i < opciones.length; i++) {
 
-                System.out.println(opciones[i]);
+                System.out.println(i+1+"."+opciones[i]);
             }
             System.out.println("-----------------------");
             System.out.println("0.Salir");

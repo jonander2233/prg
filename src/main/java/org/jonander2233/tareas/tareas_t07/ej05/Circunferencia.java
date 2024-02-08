@@ -68,11 +68,11 @@ public class Circunferencia {
         this.y = y;
     }
 
-    @Override
-    public String toString() {
-        if(centro.getX()=0 && centro.getY()=0){
+   // @Override
+    //public String toString() {
+      //  if(centro.getX()=0 && centro.getY()=0){
 
-        }
-        return "Circunferencia de radio: "+radio+" cm situada";
-    }
+        //}
+      //  return "Circunferencia de radio: "+radio+" cm situada";
+    //}
 }

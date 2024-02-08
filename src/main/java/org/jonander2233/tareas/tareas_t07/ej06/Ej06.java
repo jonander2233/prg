@@ -1,8 +1,9 @@
 package org.jonander2233.tareas.tareas_t07.ej06;
-
+import org.jonander2233.lib_personal.Eys;
 import org.jonander2233.lib_personal.Menu;
 
 public class Ej06 {
+    private static Almacen almacen = new Almacen(50);
     public static void ej06(){
         int seleccionMenu1;
         int seleccionMenu2;
@@ -13,8 +14,10 @@ public class Ej06 {
             seleccionMenu1 = Menu.mostrar("GESTION DE BICICLETAS",opcionesMenu1);
             switch (seleccionMenu1){
                 case 1:
+                    anyadirBicicleta();
                     break;
                 case 2:
+                    venderBicicleta();
                     break;
                 case 3:
                     break;
@@ -36,5 +39,32 @@ public class Ej06 {
             }
         }while (seleccionMenu1 !=0);
     }
+    public static void venderBicicleta(){
 
+    }
+    public static void anyadirBicicleta() {
+        char seleccion;
+        int ref = Eys.imprimirYLeerInt("Introduzca la referencia");
+        Bicicleta bicicleta  = almacen.buscarPorRef(ref);
+        if(bicicleta == null){
+            System.out.println("la referencia introducida no existe, añadir ahora? S/N");
+            seleccion = Eys.leerChar();
+            if (seleccion == 'S'){
+                // Solicitar y validar datos de la bicicleta
+                String marca = Eys.imprimirYLeer("¿Que marca es?", 2, 20);
+                String modelo = Eys.imprimirYLeer("¿Que modelo es?",2,20);
+                String pesoKg = Eys.imprimirYLeer("¿Cuanto pesa?",2,20);
+                String tamanoRuedas = Eys.imprimirYLeer("¿Que tamano tienen las ruedas (en pulgadas)?",2,10);
+                boolean tieneMotor;
+                tieneMotor = Eys.ImprimirYleerCharSN("¿Tiene motor?");
+                String fechaFabr = Eys.imprimirYLeer("¿Cuando se ha fabricado?",2,10);
+                double precio = Eys.imprimirYLeerDouble("¿Que precio tiene?");
+                int nExistencias = Eys.imprimirYLeerInt("cuantas quieres añadir?");
+                almacen.crearBicicleta(marca,modelo,pesoKg,tamanoRuedas,tieneMotor,fechaFabr,precio,nExistencias);
+            }
+        } else {
+            int cantidad = Eys.imprimirYLeerInt("Cuantas quieres añadir?");
+            bicicleta.addExistencia(cantidad);
+        }
+    }
 }
