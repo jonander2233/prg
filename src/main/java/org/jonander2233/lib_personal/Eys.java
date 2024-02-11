@@ -23,17 +23,37 @@ public class Eys {
         System.out.println(num);
     }
     // --------------------------Enteros--------------------------------------------------------
+
+
+
+
     public static int imprimirYLeerInt(String texto, int min, int max){
-        int respuesta;
-        do{
-            System.out.println(texto);
-            respuesta = Integer.parseInt(lector.nextLine());
-            if (respuesta < min || respuesta > max){
-                Eys.imprimir("Solo un valor entre "+ min+" y "+ max +".");
+        int respuesta = 0;
+        boolean valido = false;
+        System.out.println(texto);
+        do {
+            if (lector.hasNextInt()) {
+                respuesta = lector.nextInt();
+                if (respuesta >= min && respuesta <= max) {
+                    valido = true;
+                } else {
+                    System.out.println("Por favor, introduce un número dentro del rango (" + min + " - " + max + ").");
+                }
+            } else {
+                System.out.println("Por favor, introduce un número válido.");
+                lector.next(); // Limpiar el buffer de entrada
             }
-        }while(respuesta < min || respuesta > max);
+        } while (!valido);
+        lector.nextLine();
         return respuesta;
     }
+
+
+
+
+
+
+
     public static int leerInt(){
         int respuesta = Integer.parseInt(lector.nextLine());
         return respuesta;

@@ -22,13 +22,17 @@ public class Menu {
     }
     private static int validarOpcion(){
         Scanner scanner = new Scanner(System.in);
-        int numero = 0;
-        boolean entradaValida = true;
+        int numero=0;
+        boolean valido=false;
         do {
-            String input = scanner.nextLine();
-            numero = Integer.parseInt(input);
-            entradaValida = true;
-        } while (!entradaValida);
+            if (scanner.hasNextInt()) {
+                numero = scanner.nextInt();
+                valido = true;
+            } else {
+                System.out.println("Entrada no válida. Debe ingresar un número entero.");
+                scanner.next();
+            }
+        }while (valido==false);
         return numero;
     }
 }

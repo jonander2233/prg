@@ -57,7 +57,7 @@ public class Ej06 {
 
     public static void anyadirBicicleta() {
         char seleccion;
-        int ref = Eys.imprimirYLeerInt("Introduzca la referencia",0,MAXIMA_REFERENCIA);
+        int ref = Eys.imprimirYLeerInt("Introduzca la referencia",1,MAXIMA_REFERENCIA);
         Bicicleta bicicleta  = almacen.buscarPorRef(ref);
         if(bicicleta == null){
             System.out.println("la referencia introducida no existe, añadir ahora? S/N");
