@@ -70,7 +70,7 @@ public class Ej06 {
             if(bicicleta == null){
                 Eys.imprimir("la referencia introducida no es valida");
             }else {
-                bicicleta.toString();
+                System.out.println(bicicleta.toString());
             }
         }
 

@@ -39,7 +39,7 @@ public class Bicicleta {
         if (cantidad > nExistencias){
             return false;
         }
-        nExistencias -= cantidad;
+        nExistencias = nExistencias - cantidad;
         return true;
     }
 
