@@ -3,6 +3,7 @@ import org.jonander2233.lib_personal.Eys;
 import org.jonander2233.lib_personal.Menu;
 
 public class Ej06 {
+    private static int MAXIMA_REFERENCIA = 999999999;
     private static Almacen almacen = new Almacen(50);
     public static void ej06(){
         int seleccionMenu1;
@@ -40,11 +41,23 @@ public class Ej06 {
         }while (seleccionMenu1 !=0);
     }
     public static void venderBicicleta(){
+        int ref;
+        do {
+            ref = Eys.imprimirYLeerInt("introduce el numero de referencia", 1, MAXIMA_REFERENCIA);
+            if (almacen.buscarPorRef(ref) == null) {
+                Eys.imprimir("la referencia no existe!");
+            }
+        }while (almacen.buscarPorRef(ref)== null);
 
+        int cantidad;
+        cantidad = Eys.imprimirYLeerInt("cuantas se van a vender?(max: "+ almacen.getExistencias(ref) +")", 1, almacen.getExistencias(ref));
+        almacen.venderBicicleta(ref,cantidad);
     }
+
+
     public static void anyadirBicicleta() {
         char seleccion;
-        int ref = Eys.imprimirYLeerInt("Introduzca la referencia");
+        int ref = Eys.imprimirYLeerInt("Introduzca la referencia",0,MAXIMA_REFERENCIA);
         Bicicleta bicicleta  = almacen.buscarPorRef(ref);
         if(bicicleta == null){
             System.out.println("la referencia introducida no existe, añadir ahora? S/N");
@@ -59,11 +72,11 @@ public class Ej06 {
                 tieneMotor = Eys.ImprimirYleerCharSN("¿Tiene motor?");
                 String fechaFabr = Eys.imprimirYLeer("¿Cuando se ha fabricado?",2,10);
                 double precio = Eys.imprimirYLeerDouble("¿Que precio tiene?");
-                int nExistencias = Eys.imprimirYLeerInt("cuantas quieres añadir?");
+                int nExistencias = Eys.imprimirYLeerInt("cuantas quieres añadir?",1,9999);
                 almacen.crearBicicleta(marca,modelo,pesoKg,tamanoRuedas,tieneMotor,fechaFabr,precio,nExistencias);
             }
         } else {
-            int cantidad = Eys.imprimirYLeerInt("Cuantas quieres añadir?");
+            int cantidad = Eys.imprimirYLeerInt("Cuantas quieres añadir?",1,9999999);
             bicicleta.addExistencia(cantidad);
         }
     }

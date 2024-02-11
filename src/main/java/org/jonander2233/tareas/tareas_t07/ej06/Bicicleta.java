@@ -1,6 +1,5 @@
 package org.jonander2233.tareas.tareas_t07.ej06;
-import java.util.HashSet;
-import java.util.Set;
+
 public class Bicicleta {
     private static int autoincrement = 0;
     private int referencia;
@@ -27,23 +26,22 @@ public class Bicicleta {
         this.nExistencias=nExistencias;
     }
 
+    public int getNExistencias() {
+        return nExistencias;
+    }
+
     public int getReferencia() {
         return referencia;
     }
     public void addExistencia(int cantidad){
         nExistencias += cantidad;
     }
-
-    //    public Bicicleta1(){
-//        this.referencia = ++autoincrement;
-//        marca= "Scott";
-//        modelo= "modeloCalle";
-//        pesoKg= "17kg";
-//        tamanoRuedasEnPulgadas="17";
-//        tieneMotor= false;
-//        fechaFabricacion = "3/2020";
-//        precio= 500;
-//        nExistencias=0;
-//    }
+    public boolean subtractExistencia(int cantidad){
+        if (cantidad > nExistencias){
+            return false;
+        }
+        nExistencias -= cantidad;
+        return true;
+    }
 }
 

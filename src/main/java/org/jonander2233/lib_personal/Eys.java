@@ -23,9 +23,15 @@ public class Eys {
         System.out.println(num);
     }
     // --------------------------Enteros--------------------------------------------------------
-    public static int imprimirYLeerInt(String texto){
-        System.out.println(texto);
-        int respuesta = Integer.parseInt(lector.nextLine());
+    public static int imprimirYLeerInt(String texto, int min, int max){
+        int respuesta;
+        do{
+            System.out.println(texto);
+            respuesta = Integer.parseInt(lector.nextLine());
+            if (respuesta < min || respuesta > max){
+                Eys.imprimir("Solo un valor entre "+ min+" y "+ max +".");
+            }
+        }while(respuesta < min || respuesta > max);
         return respuesta;
     }
     public static int leerInt(){
@@ -103,7 +109,7 @@ public class Eys {
         Eys.imprimir("3.-"+opcion3);
         Eys.imprimir("4.-"+opcion4);
         Eys.imprimir("0.-Salir del menu.");
-        opcion = Eys.imprimirYLeerInt("Selecciona una opcion: \n");
+        opcion = Eys.imprimirYLeerInt("Selecciona una opcion: \n",0,4);
         return opcion;
     }
 

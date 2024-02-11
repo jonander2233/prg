@@ -1,7 +1,5 @@
 package org.jonander2233.tareas.tareas_t07.ej06;
 
-import org.jonander2233.lib_personal.Eys;
-
 public class Almacen {
     private Bicicleta[] bicicletas;
     private int numReferencias;
@@ -24,5 +22,28 @@ public class Almacen {
                                     tieneMotor,fechaFabricacion,precio,nExistencias);
         bicicletas[numReferencias] = biciNueva;
         numReferencias++;
+    }
+    public int getExistencias (int ref){
+        for (int i = 0; i < bicicletas.length; i++) {
+            if (bicicletas[i].getReferencia() == ref) {
+                return bicicletas[i].getNExistencias();
+            }
+        }
+            return -1;
+    }
+    public boolean venderBicicleta(int ref,int cantidad){
+        for (int i = 0; i < bicicletas.length; i++) {
+            if (bicicletas[i].getReferencia() == ref) {
+                if (bicicletas[i].subtractExistencia(cantidad) == false){
+                    return false;
+
+                } else if (bicicletas[i].subtractExistencia(cantidad) == true) {
+                    return true;
+                }
+            }else {
+                return false;
+            }
+        }
+        return false;
     }
 }
