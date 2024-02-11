@@ -21,12 +21,11 @@ public class Ej06 {
                     venderBicicleta();
                     break;
                 case 3:
-                    break;
-                case 4:
                     do{
                         seleccionMenu2 = Menu.mostrar("CONSULTA BICICLETA",opcionesMenu2);
                         switch (seleccionMenu2){
                             case 1:
+                                consultarBicicletaRef();
                                 break;
                             case 2:
                                 break;
@@ -35,23 +34,46 @@ public class Ej06 {
                         }
                     }while (seleccionMenu2 !=0);
                     break;
+                case 4:
+                    break;
                 default:
                     break;
             }
         }while (seleccionMenu1 !=0);
     }
+
+
+
     public static void venderBicicleta(){
         int ref;
         do {
-            ref = Eys.imprimirYLeerInt("introduce el numero de referencia", 1, MAXIMA_REFERENCIA);
-            if (almacen.buscarPorRef(ref) == null) {
-                Eys.imprimir("la referencia no existe!");
+            ref = Eys.imprimirYLeerInt("introduce el numero de referencia o presione 0 para salir.", 0, MAXIMA_REFERENCIA);
+            if (ref != 0){
+                if (almacen.buscarPorRef(ref) == null) {
+                    Eys.imprimir("la referencia no existe!");
+                }
             }
-        }while (almacen.buscarPorRef(ref)== null);
+        }while ( ref != 0 && almacen.buscarPorRef(ref)== null );
+        if ( ref !=0 ) {
+            int cantidad;
+            cantidad = Eys.imprimirYLeerInt("cuantas se van a vender?(max: " + almacen.getExistencias(ref) + ")", 1, almacen.getExistencias(ref));
+            almacen.venderBicicleta(ref, cantidad);
+        }
+    }
 
-        int cantidad;
-        cantidad = Eys.imprimirYLeerInt("cuantas se van a vender?(max: "+ almacen.getExistencias(ref) +")", 1, almacen.getExistencias(ref));
-        almacen.venderBicicleta(ref,cantidad);
+
+
+    public static void consultarBicicletaRef() {
+        int ref = Eys.imprimirYLeerInt("introduce la referencia o presione 0 para salir",0,MAXIMA_REFERENCIA);
+        if (ref!=0){
+            Bicicleta bicicleta = almacen.buscarPorRef(ref);
+            if(bicicleta == null){
+                Eys.imprimir("la referencia introducida no es valida");
+            }else {
+                bicicleta.toString();
+            }
+        }
+
     }
 
 

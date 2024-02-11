@@ -8,7 +8,6 @@ public class Bicicleta {
     private String pesoKg;
     private String tamanoRuedasEnPulgadas;
     private boolean tieneMotor;
-    private boolean nulo;
     private String fechaFabricacion;
     private double precio;
     private int nExistencias;
@@ -42,6 +41,21 @@ public class Bicicleta {
         }
         nExistencias -= cantidad;
         return true;
+    }
+
+    @Override
+    public String toString() {
+        return "Bicicleta{" +
+                "referencia=" + referencia +
+                ", marca='" + marca + '\'' +
+                ", modelo='" + modelo + '\'' +
+                ", pesoKg='" + pesoKg + '\'' +
+                ", tamanoRuedasEnPulgadas='" + tamanoRuedasEnPulgadas + '\'' +
+                ", tieneMotor=" + tieneMotor +
+                ", fechaFabricacion='" + fechaFabricacion + '\'' +
+                ", precio=" + precio +
+                ", nExistencias=" + nExistencias +
+                '}';
     }
 }
 
