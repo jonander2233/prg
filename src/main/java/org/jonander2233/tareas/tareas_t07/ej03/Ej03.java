@@ -10,7 +10,7 @@ public class Ej03 {
         int respuestamenu1 = 0;
         int respuestamenu2 = 0;
         do{
-            respuestamenu1 = Menu.mostrar("GESTION ALUMNOS",opcionesMenu1);
+            respuestamenu1 = Menu.mostrar("GESTION ALUMNOS",opcionesMenu1,"Salir");
             switch (respuestamenu1){
                 case 1:
                     System.out.println("a");
@@ -20,7 +20,7 @@ public class Ej03 {
                     break;
                 case 3:
                     do{
-                    respuestamenu2 = Menu.mostrar("CONSULTAS",opcionesMenu2);
+                    respuestamenu2 = Menu.mostrar("CONSULTAS",opcionesMenu2,"volver al menu principal");
                     switch (respuestamenu2){
 
                     }

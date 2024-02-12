@@ -31,6 +31,9 @@ public class Bicicleta {
     public String getMarca(){
         return marca;
     }
+    public String getModelo(){
+        return modelo;
+    }
     public int getReferencia() {
         return referencia;
     }
@@ -60,6 +63,9 @@ public class Bicicleta {
                 ", precio=" + precio +
                 ", nExistencias=" + nExistencias +
                 '}';
+    }
+    public String existenciasToString() {
+        return "Bicicleta "+ marca + " " + modelo + " hay "+ nExistencias +" unidades.";
     }
 }
 

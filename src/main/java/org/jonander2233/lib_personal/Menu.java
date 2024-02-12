@@ -1,7 +1,7 @@
 package org.jonander2233.lib_personal;
 import java.util.Scanner;
 public class Menu {
-    public static int mostrar(String titulo, String[] opciones){
+    public static int mostrar(String titulo, String[] opciones,String textoFinal){
         int opcion;
         do {
             System.out.println("*********************");
@@ -12,7 +12,7 @@ public class Menu {
                 System.out.println(i + 1 + "." + opciones[i]);
             }
             System.out.println("-----------------------");
-            System.out.println("0.Salir");
+            System.out.println("0."+textoFinal);
             opcion = validarOpcion();
             if (opcion < 0 || opcion > opciones.length) {
                 System.out.println("error, el numero introducido no es valido");

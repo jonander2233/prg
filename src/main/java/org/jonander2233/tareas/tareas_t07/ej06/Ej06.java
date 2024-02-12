@@ -12,7 +12,7 @@ public class Ej06 {
         String [] opcionesMenu2 = new String[]{"Consultar por referencia","Consultar por marca","Consultar por modelo"};
 
         do{
-            seleccionMenu1 = Menu.mostrar("GESTION DE BICICLETAS",opcionesMenu1);
+            seleccionMenu1 = Menu.mostrar("GESTION DE BICICLETAS",opcionesMenu1,"salir");
             switch (seleccionMenu1){
                 case 1:
                     anyadirBicicleta();
@@ -22,7 +22,7 @@ public class Ej06 {
                     break;
                 case 3:
                     do{
-                        seleccionMenu2 = Menu.mostrar("CONSULTA BICICLETA",opcionesMenu2);
+                        seleccionMenu2 = Menu.mostrar("CONSULTA BICICLETA",opcionesMenu2,"volver al menu principal");
                         switch (seleccionMenu2){
                             case 1:
                                 consultarBicicletaRef();
@@ -31,11 +31,13 @@ public class Ej06 {
                                 consultarBicicletaMarca();
                                 break;
                             case 3:
+                                consultarBicicletaModelo();
                                 break;
                         }
                     }while (seleccionMenu2 !=0);
                     break;
                 case 4:
+                    mostrarStock();
                     break;
                 default:
                     break;
@@ -43,17 +45,35 @@ public class Ej06 {
         }while (seleccionMenu1 !=0);
     }
 
+    private static void mostrarStock(){
+        almacen.mostrarStockBicicletas();
+    }
+
     private static void consultarBicicletaMarca(){
         String marca = Eys.imprimirYLeer("introduce la marca o escribe salir.", 0, 10);
-        if(!marca.equals("salir")){
-            Bicicleta bicicleta = almacen.buscarPorMarca(marca);
-            if(bicicleta == null){
-                Eys.imprimir("la referencia introducida no es valida");
-            }else {
-                System.out.println(bicicleta.toString());
+        if (!marca.equals("salir")) {
+            Bicicleta[] arrayBicicletasDeEstaMarca = almacen.buscarPorMarca(marca);
+            if (arrayBicicletasDeEstaMarca == null || arrayBicicletasDeEstaMarca.length == 0) {
+                Eys.imprimir("No se encontraron bicicletas con la marca introducida.");
+            } else {
+                for (int i = 0; i < arrayBicicletasDeEstaMarca.length; i++) {
+                    System.out.println(arrayBicicletasDeEstaMarca[i].toString());
+                }
             }
         }
-
+    }
+    private static void consultarBicicletaModelo(){
+        String modelo = Eys.imprimirYLeer("introduce el modelo o escribe salir.", 0, 10);
+        if (!modelo.equals("salir")) {
+            Bicicleta[] arrayBicicletasDeEstaModelo = almacen.buscarPorModelo(modelo);
+            if (arrayBicicletasDeEstaModelo == null || arrayBicicletasDeEstaModelo.length == 0) {
+                Eys.imprimir("No se encontraron bicicletas con el modelo introducido.");
+            } else {
+                for (int i = 0; i < arrayBicicletasDeEstaModelo.length; i++) {
+                    System.out.println(arrayBicicletasDeEstaModelo[i].toString());
+                }
+            }
+        }
     }
 
     private static void venderBicicleta(){
@@ -69,7 +89,8 @@ public class Ej06 {
         if ( ref !=0 ) {
             int cantidad;
             cantidad = Eys.imprimirYLeerInt("cuantas se van a vender?(max: " + almacen.getExistencias(ref) + ")", 1, almacen.getExistencias(ref));
-            almacen.venderBicicleta(ref, cantidad);
+            boolean correcto = almacen.venderBicicleta(ref, cantidad);
+            Eys.imprimir("bicicleta vendida correctamente");
         }
     }
 
