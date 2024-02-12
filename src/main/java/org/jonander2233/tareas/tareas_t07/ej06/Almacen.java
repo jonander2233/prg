@@ -34,10 +34,11 @@ public class Almacen {
     public boolean venderBicicleta(int ref,int cantidad){
         for (int i = 0; i < bicicletas.length; i++) {
             if (bicicletas[i].getReferencia() == ref) {
-                if (bicicletas[i].subtractExistencia(cantidad) == false){
+                if (bicicletas[i].consultarExistencia(cantidad) == false){
                     return false;
 
-                } else if (bicicletas[i].subtractExistencia(cantidad) == true) {
+                } else if (bicicletas[i].consultarExistencia(cantidad) == true) {
+                    bicicletas[i].subtractExistencia(cantidad);
                     return true;
                 }
             }else {

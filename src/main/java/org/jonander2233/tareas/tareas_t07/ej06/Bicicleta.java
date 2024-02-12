@@ -35,12 +35,14 @@ public class Bicicleta {
     public void addExistencia(int cantidad){
         nExistencias += cantidad;
     }
-    public boolean subtractExistencia(int cantidad){
+    public boolean consultarExistencia(int cantidad){
         if (cantidad > nExistencias){
             return false;
         }
-        nExistencias = nExistencias - cantidad;
         return true;
+    }
+    public void subtractExistencia(int cantidad){
+        nExistencias = nExistencias - cantidad;
     }
 
     @Override
