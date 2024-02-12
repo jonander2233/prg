@@ -28,7 +28,9 @@ public class Bicicleta {
     public int getNExistencias() {
         return nExistencias;
     }
-
+    public String getMarca(){
+        return marca;
+    }
     public int getReferencia() {
         return referencia;
     }

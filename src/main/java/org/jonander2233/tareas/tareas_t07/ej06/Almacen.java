@@ -16,6 +16,13 @@ public class Almacen {
         }
         return null;
     }
+    public Bicicleta buscarPorMarca(String marca) {
+        for (int i = 0; i < numReferencias; i++) {
+            if (bicicletas[i].getMarca().equals(marca))
+                return bicicletas[i];
+        }
+        return null;
+    }
     public void crearBicicleta (String marca,String modelo, String pesoKg, String tamanoRuedasEnPulgadas,
                                 boolean tieneMotor, String fechaFabricacion, double precio, int nExistencias ){
         Bicicleta biciNueva = new Bicicleta(marca,modelo,pesoKg,tamanoRuedasEnPulgadas,

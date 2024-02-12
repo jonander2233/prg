@@ -28,6 +28,7 @@ public class Ej06 {
                                 consultarBicicletaRef();
                                 break;
                             case 2:
+                                consultarBicicletaMarca();
                                 break;
                             case 3:
                                 break;
@@ -42,9 +43,20 @@ public class Ej06 {
         }while (seleccionMenu1 !=0);
     }
 
+    private static void consultarBicicletaMarca(){
+        String marca = Eys.imprimirYLeer("introduce la marca o escribe salir.", 0, 10);
+        if(!marca.equals("salir")){
+            Bicicleta bicicleta = almacen.buscarPorMarca(marca);
+            if(bicicleta == null){
+                Eys.imprimir("la referencia introducida no es valida");
+            }else {
+                System.out.println(bicicleta.toString());
+            }
+        }
 
+    }
 
-    public static void venderBicicleta(){
+    private static void venderBicicleta(){
         int ref;
         do {
             ref = Eys.imprimirYLeerInt("introduce el numero de referencia o presione 0 para salir.", 0, MAXIMA_REFERENCIA);
@@ -63,7 +75,7 @@ public class Ej06 {
 
 
 
-    public static void consultarBicicletaRef() {
+    private static void consultarBicicletaRef() {
         int ref = Eys.imprimirYLeerInt("introduce la referencia o presione 0 para salir",0,MAXIMA_REFERENCIA);
         if (ref!=0){
             Bicicleta bicicleta = almacen.buscarPorRef(ref);
@@ -77,7 +89,7 @@ public class Ej06 {
     }
 
 
-    public static void anyadirBicicleta() {
+    private static void anyadirBicicleta() {
         char seleccion;
         int ref = Eys.imprimirYLeerInt("Introduzca la referencia",1,MAXIMA_REFERENCIA);
         Bicicleta bicicleta  = almacen.buscarPorRef(ref);
@@ -86,7 +98,7 @@ public class Ej06 {
             seleccion = Eys.leerChar();
             if (seleccion == 'S'){
                 // Solicitar y validar datos de la bicicleta
-                String marca = Eys.imprimirYLeer("¿Que marca es?", 2, 20);
+                String marca = Eys.imprimirYLeerConExclusion("¿Que marca es?", 2, 20,"salir");
                 String modelo = Eys.imprimirYLeer("¿Que modelo es?",2,20);
                 String pesoKg = Eys.imprimirYLeer("¿Cuanto pesa?",2,20);
                 String tamanoRuedas = Eys.imprimirYLeer("¿Que tamano tienen las ruedas (en pulgadas)?",2,10);

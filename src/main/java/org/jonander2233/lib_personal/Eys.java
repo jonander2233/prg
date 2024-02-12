@@ -47,13 +47,6 @@ public class Eys {
         lector.nextLine();
         return respuesta;
     }
-
-
-
-
-
-
-
     public static int leerInt(){
         int respuesta = Integer.parseInt(lector.nextLine());
         return respuesta;
@@ -97,6 +90,17 @@ public class Eys {
                 System.out.println("Respuesta invalida");
             }
         }while (respuesta.length() > max  || respuesta.length() < min );
+        return respuesta;
+    }
+    public static String imprimirYLeerConExclusion(String texto,int min, int max,String palabraExcluida){
+        String respuesta;
+        do {
+            System.out.println(texto);
+            respuesta = lector.nextLine();
+            if ((respuesta.length() < min || respuesta.length() > max) || respuesta.equals(palabraExcluida)){
+                System.out.println("Respuesta invalida");
+            }
+        }while ((respuesta.length() > max  || respuesta.length() < min) || respuesta.equals(palabraExcluida));
         return respuesta;
     }
     // --------------------------Arrays--------------------------------------------------------
