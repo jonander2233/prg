@@ -8,7 +8,6 @@ public class Menu {
             System.out.println("****" + titulo + "****");
             System.out.println("*********************");
             for (int i = 0; i < opciones.length; i++) {
-
                 System.out.println(i + 1 + "." + opciones[i]);
             }
             System.out.println("-----------------------");
