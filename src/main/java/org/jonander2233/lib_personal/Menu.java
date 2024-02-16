@@ -34,4 +34,10 @@ public class Menu {
         }while (valido==false);
         return numero;
     }
+    public static int menuEnum (Enum opciones){
+
+        for (int i = 0; i < opciones.va; i++) {
+
+        }
+    }
 }

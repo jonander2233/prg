@@ -3,7 +3,8 @@ package org.jonander2233.tareas.tareas_t07.ej07;
 import org.jonander2233.lib_personal.Menu;
 
 public class Ej07 {
-    public static void ej06() {
+Centro centro = new Centro(40);
+    public static void ej07() {
         String[] opcionesmenu1 = new String[]{"Nuevo paciente", "Atender paciente", "Consultas", "Alta medica"};
         String[] opcionesmenu2 = new String[]{"Por Sip", "Por fechas", "Estadisticas", "Mostrar historico mensual"};
         int seleccionMenu1;
@@ -41,10 +42,9 @@ public class Ej07 {
             }
         } while (opcion != 0);
     }
-    private static void nuevoPaciente(){
-        String[] sexo = new String[]{"", "Por fechas", "Estadisticas", "Mostrar historico mensual"};
+    private void nuevoPaciente(){
+//        centro.anyadirPaciente();
 
-        //        Paciente.sexo sexo = new Paciente.sexo();
         String sip;
         String nombre;
 

@@ -7,3 +7,4 @@ public class Atencion {
     private boolean temp;
     private Date entrada;
 }
+ 
