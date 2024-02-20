@@ -9,21 +9,26 @@ public class DynamicArray {
         nElementos = 0;
     }
     public boolean add (double value){
-        if(nElementos < arrayDeDoubles.length){
+        if ( nElementos == arrayDeDoubles.length){
+            arrayExpand();
             arrayDeDoubles[nElementos] = value;
             nElementos++;
-        } else if ( nElementos == arrayDeDoubles.length){
-            double[] arrayExpandido = new double[arrayDeDoubles.length * 2];
-            for (int i = 0; i < arrayDeDoubles.length; i++) {
-                arrayExpandido[i] = arrayDeDoubles [i];
-            }
-
-            arrayDeDoubles = arrayExpandido;
+        } else {
             arrayDeDoubles[nElementos] = value;
             nElementos++;
         }
         return true;
     }
-//    public
 
+    public boolean add (int index,double value) {
+
+        return true;
+    }
+    private void arrayExpand (){
+        double[] arrayExpandido = new double[arrayDeDoubles.length * 2];
+        for (int i = 0; i < arrayDeDoubles.length; i++) {
+            arrayExpandido[i] = arrayDeDoubles [i];
+        }
+        arrayDeDoubles = arrayExpandido;
+    }
 }
