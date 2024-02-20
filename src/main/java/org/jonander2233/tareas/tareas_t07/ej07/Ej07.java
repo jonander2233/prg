@@ -12,7 +12,7 @@ Centro centro = new Centro(40);
             seleccionMenu1 = Menu.mostrar("URGENCIAS", opcionesmenu1, "Salir");
             switch (seleccionMenu1) {
                 case 1:
-                    nuevoPaciente();
+//                    nuevoPaciente();
                     break;
                 case 2:
                     break;
