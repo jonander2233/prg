@@ -8,8 +8,11 @@ public class DynamicArray {
         arrayDeDoubles = new double[tamano];
         nElementos = 0;
     }
+
+
+
     public boolean add (double value){
-        if ( nElementos == arrayDeDoubles.length){
+        if ( isFull()){
             arrayExpand();
             arrayDeDoubles[nElementos] = value;
             nElementos++;
@@ -19,51 +22,43 @@ public class DynamicArray {
         }
         return true;
     }
-
     public boolean add (int index,double value) {
-        if (index > arrayDeDoubles.length)
-
-        if ( nElementos == arrayDeDoubles.length) {
+        if (index > nElementos)
+            return false;
+        if (isFull()) {
             arrayExpand();
-            nElementos++;
-            for (int i = nElementos; i > index; i--) {
-                arrayDeDoubles[i] = arrayDeDoubles [i+1];
-            }
+            moverDerecha(index);
             arrayDeDoubles[index] = value;
         }else{
-            nElementos++;
-            for (int i = nElementos; i > index; i--) {
-                arrayDeDoubles[i] = arrayDeDoubles [i+1];
-            }
+            moverDerecha(index);
             arrayDeDoubles[index] = value;
         }
         return true;
     }
+
+
+
     public double remove (double value){
         int index;
-        for (int i = 0; i < arrayDeDoubles.length; i++) {
+        for (int i = 0; i < nElementos; i++) {
             if(value == arrayDeDoubles [i]){
                 index = i;
-                for (int j = index; j < arrayDeDoubles.length; j++) {
-                    arrayDeDoubles[j] = arrayDeDoubles [j+1];
-                }
-                nElementos--;
-                return 1;
+                moverIzquierda(index);
+                return arrayDeDoubles[i];
             }
         }
-        return -1;
+        return Double.POSITIVE_INFINITY;
     }
     public double remove (int index){
-        if (index > arrayDeDoubles.length)
-            return -1;
+        if (index > nElementos)
+            return Double.POSITIVE_INFINITY;
 
         double nEliminado = arrayDeDoubles[index];
-        for (int i = index; i < arrayDeDoubles.length; i++) {
-            arrayDeDoubles[i] = arrayDeDoubles [i+1];
-        }
-        nElementos--;
+        moverIzquierda(index);
         return nEliminado;
     }
+
+
 
     public double get (int index){
         double num = arrayDeDoubles[index];
@@ -75,12 +70,31 @@ public class DynamicArray {
         return true;
     }
 
+
+
+
+    private boolean isFull(){
+        return nElementos == arrayDeDoubles.length;
+    }
+
     private void arrayExpand (){
         double[] arrayExpandido = new double[arrayDeDoubles.length * 2];
         for (int i = 0; i < arrayDeDoubles.length; i++) {
             arrayExpandido[i] = arrayDeDoubles [i];
         }
         arrayDeDoubles = arrayExpandido;
+    }
+    private void moverDerecha(int index){
+        for (int i = nElementos; i > index ; i--) {
+            arrayDeDoubles[i] = arrayDeDoubles[i-1];
+        }
+        nElementos++;
+    }
+    private void moverIzquierda(int index){
+        for (int i = index; i < nElementos-1 ; i++) {
+            arrayDeDoubles[i] = arrayDeDoubles[i+1];
+        }
+        nElementos--;
     }
 
 }
