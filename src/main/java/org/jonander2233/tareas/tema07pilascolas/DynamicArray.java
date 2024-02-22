@@ -9,7 +9,9 @@ public class DynamicArray {
         nElementos = 0;
     }
 
-
+    public int size(){
+        return nElementos;
+    }
 
     public boolean add (double value){
         if ( isFull()){
