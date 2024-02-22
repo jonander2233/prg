@@ -42,6 +42,7 @@ public class CalculadoraRPN {
             case "/":
                 return op1 / op2;
         }
+        return -1;
     }
     private boolean isOperator(String text){
         switch (text){
