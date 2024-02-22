@@ -2,44 +2,44 @@ package org.jonander2233.lib_personal;
 
 public class Pila {
     private String[] datos;
-    private int tope;
+    private int indice;
 
     public Pila(int capacidadInicial) {
         datos = new String[capacidadInicial];
-        tope = -1;
+        indice = -1;
     }
 
     public void push(String elemento) {
         if(isFull()) {
             ampliarArray();
         }
-        datos[++tope] = elemento;
+        datos[++indice] = elemento;
     }
 
     public String pop() {
         if(isEmpty()) {
             return null;
         }
-        return datos[tope--];
+        return datos[indice--];
     }
 
     private boolean isFull() {
-        return tope == datos.length - 1;
+        return indice == datos.length - 1;
     }
 
     public int size() {
-        return tope + 1;
+        return indice + 1;
     }
 
     public String top() {
         if(isEmpty()) {
             return null;
         }
-        return datos[tope];
+        return datos[indice];
     }
 
     public boolean isEmpty() {
-        return tope == -1;
+        return indice == -1;
     }
 
     private void ampliarArray() {

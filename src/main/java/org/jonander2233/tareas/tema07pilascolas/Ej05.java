@@ -23,7 +23,7 @@ public class Ej05 {
 
             }
         }
-        Pila pila = new Pila(tamanyo);
+//        Pila pila = new Pila(tamanyo);
     }
     private static boolean comparadorOperadores(char car){
         return car == '+' && car == '-' && car == '*' && car == '/' && car == '%';
