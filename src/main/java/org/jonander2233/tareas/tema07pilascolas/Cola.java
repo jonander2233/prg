@@ -1,7 +1,7 @@
 package org.jonander2233.tareas.tema07pilascolas;
 
 public class Cola {
-    private DynamicArray data;
+    private final DynamicArray data;
 
     public Cola(int initialCapacity){
         data = new DynamicArray(initialCapacity);
@@ -21,10 +21,9 @@ public class Cola {
         }
         return data.remove(0);
     }
-    public double peek (){
+    public double peek(){
         if (isEmpty())
             return Double.POSITIVE_INFINITY;
-
+        return data.get(0);
     }
-
 }
