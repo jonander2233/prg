@@ -9,11 +9,28 @@ public class EjercicioCalculadora {
         //inicio el toolkit y el jframe, además de obtener el tamaño de la pantalla
         JFrame ventana = new JFrame("Calculadora");
         Toolkit tk = Toolkit.getDefaultToolkit();
-        Dimension dimension = tk.getScreenSize();
+        Dimension pantalla = tk.getScreenSize();
+        JPanel panel = new JPanel();
 
+        //layouts
+
+
+        //inicio las variables de tamaño y posición de la ventana
         int alto = 800;
         int ancho= 500;
+        int posX = 0;
+        int posY = 0;
 
+        //establezco la posición X Y en el centro de la pantalla
+
+//        posX = (int)pantalla.getHeight() / 2 - ;
+
+        //dimensiono la ventana
         ventana.setSize(ancho,alto);
+
+        //posiciono la ventana
+//        ventana.setBounds();
+        //hago la ventana visible
+        ventana.setVisible(true);
     }
 }
