@@ -15,93 +15,6 @@ public class EjercicioCalculadora {
         JPanel  numeros= new JPanel();
         JPanel  simbolos= new JPanel();
 
-        //main
-        mainPanel.setLayout(new GridBagLayout());
-        GridBagConstraints gbcMain = new GridBagConstraints();
-        //numeros y simbolos
-        contenedorNumYSimbolos.setLayout(new GridBagLayout());
-        GridBagConstraints gbcNumYSimbolos = new GridBagConstraints();
-        //numeros
-//        numeros.setLayout();
-        //simbolos
-
-
-        //componente pantalla
-        JLabel pantallaDeLaCalculadora = new JLabel("pantalla de la calculadora");
-        gbcMain.gridx = 0;
-        gbcMain.gridy = 0;
-        gbcMain.weighty = 0.3;
-        gbcMain.fill = GridBagConstraints.BOTH;
-        ventana.add(pantallaDeLaCalculadora,gbcMain);
-
-
-        gbcMain.gridy = 1;
-        gbcMain.weighty = 0.8;
-
-
-        //componente numeros y simbolos
-        JLabel numYSimbolos = new JLabel("paneles numeros y simbolos");
-        gbcNumYSimbolos.gridx = 0;
-        gbcNumYSimbolos.gridy = 1;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        contenedorNumYSimbolos.setLayout(new GridLayout(2,1));
-        numeros.setLayout(new GridLayout(3,3));
-        simbolos.setLayout(new GridLayout(4,1));
-
-
-
-
-        simbolos.add(new JButton("/"));
-        simbolos.add(new JButton("X"));
-        simbolos.add(new JButton("-"));
-        simbolos.add(new JButton("+"));
-        simbolos.add(new JButton("="));
-
-
-
-        for (int i = 1; i < 3*3; i++) {
-            numeros.add(new JButton(""+i));
-
-        }
-
-
-
-
-
-
-
         //inicio las variables de tamaño y posición de la ventana
         int alto = 800;
         int ancho= 500;
@@ -122,6 +35,54 @@ public class EjercicioCalculadora {
         //la ventana ya no se redimensiona
         ventana.setResizable(false);
 
+        // Creamos el panel y establecemos el layout
+        JPanel panel = new JPanel(new GridBagLayout());
+        GridBagConstraints gbc = new GridBagConstraints();
+
+        // Agregamos un componente en la fila superior
+        JLabel label = new JLabel("Contenido de la fila superior");
+        gbc.gridx = 0; // Columna 0
+        gbc.gridy = 0; // Fila 0
+        gbc.weighty = 0.2; // 20% de la altura disponible
+        gbc.fill = GridBagConstraints.BOTH; // Ocupa tanto en vertical como en horizontal
+        panel.add(label, gbc);
+
+        // Creamos un nuevo panel para la fila inferior con otro GridBagLayout
+        JPanel panelInferior = new JPanel(new GridBagLayout());
+        GridBagConstraints gbcInferior = new GridBagConstraints();
+
+        // Agregamos una columna que ocupa el 80% del espacio
+        JLabel label80 = new JLabel("Contenido columna 80%");
+        gbcInferior.gridx = 0; // Columna 0
+        gbcInferior.gridy = 0; // Fila 0
+        gbcInferior.weightx = 0.8; // 80% del ancho disponible
+        gbcInferior.fill = GridBagConstraints.BOTH;
+        panelInferior.add(label80, gbcInferior);
+
+        // Agregamos otra columna que ocupa el 20% del espacio
+        JLabel label20 = new JLabel("Contenido columna 20%");
+        gbcInferior.gridx = 1; // Columna 1
+        gbcInferior.weightx = 0.2; // 20% del ancho disponible
+        panelInferior.add(label20, gbcInferior);
+
+        // Agregamos el panel inferior al panel principal en la fila 1
+        gbc.gridy = 1; // Fila 1
+        gbc.weighty = 0.8; // 80% de la altura disponible
+        panel.add(panelInferior, gbc);
+
+        // Agregamos el panel a la ventana
+//        add(panel);
+
+
+
+
+
+
+
+
+
+
+
         //hago la ventana visible
         ventana.setVisible(true);
 
@@ -136,7 +97,6 @@ public class EjercicioCalculadora {
 
 
 
-//        ventana.pack();-------------Redimensiona la ventana para ajustarse al tamaño de los layouts y
 
 
 
