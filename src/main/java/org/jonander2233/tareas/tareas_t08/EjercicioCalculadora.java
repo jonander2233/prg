@@ -10,14 +10,95 @@ public class EjercicioCalculadora {
         JFrame ventana = new JFrame("Calculadora");
         Toolkit tk = Toolkit.getDefaultToolkit();
         Dimension pantalla = tk.getScreenSize();
-        JPanel panel = new JPanel();
+        JPanel mainPanel = new JPanel();
+        JPanel contenedorNumYSimbolos = new JPanel();
+        JPanel  numeros= new JPanel();
+        JPanel  simbolos= new JPanel();
 
-        //layouts
-        panel.setLayout(new GridLayout(2,1));
-        JButton boton = new JButton("boton1");
-        JButton boton2 = new JButton("boton2");
-//        JLabel pantallaCalc = new JLabel("pantalla");
-        ventana.add (boton,boton2);
+        //main
+        mainPanel.setLayout(new GridBagLayout());
+        GridBagConstraints gbcMain = new GridBagConstraints();
+        //numeros y simbolos
+        contenedorNumYSimbolos.setLayout(new GridBagLayout());
+        GridBagConstraints gbcNumYSimbolos = new GridBagConstraints();
+        //numeros
+//        numeros.setLayout();
+        //simbolos
+
+
+        //componente pantalla
+        JLabel pantallaDeLaCalculadora = new JLabel("pantalla de la calculadora");
+        gbcMain.gridx = 0;
+        gbcMain.gridy = 0;
+        gbcMain.weighty = 0.3;
+        gbcMain.fill = GridBagConstraints.BOTH;
+        ventana.add(pantallaDeLaCalculadora,gbcMain);
+
+
+        gbcMain.gridy = 1;
+        gbcMain.weighty = 0.8;
+
+
+        //componente numeros y simbolos
+        JLabel numYSimbolos = new JLabel("paneles numeros y simbolos");
+        gbcNumYSimbolos.gridx = 0;
+        gbcNumYSimbolos.gridy = 1;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        contenedorNumYSimbolos.setLayout(new GridLayout(2,1));
+        numeros.setLayout(new GridLayout(3,3));
+        simbolos.setLayout(new GridLayout(4,1));
+
+
+
+
+        simbolos.add(new JButton("/"));
+        simbolos.add(new JButton("X"));
+        simbolos.add(new JButton("-"));
+        simbolos.add(new JButton("+"));
+        simbolos.add(new JButton("="));
+
+
+
+        for (int i = 1; i < 3*3; i++) {
+            numeros.add(new JButton(""+i));
+
+        }
+
+
+
+
 
 
 
@@ -55,9 +136,7 @@ public class EjercicioCalculadora {
 
 
 
-//        tk.createImage("https://raja.scene7.com/is/image/Raja/products/calculadora-sobremesa-casio_PDT17590.jpg?template=withpicto410&$image=M_MS80VER_S_ES&$picto=NoPicto&hei=410&wid=410&fmt=jpg&qlt=85,0&resMode=sharp2&op_usm=1.75,0.3,2,0");
 //        ventana.pack();-------------Redimensiona la ventana para ajustarse al tamaño de los layouts y
-//componentes que contiene
 
 
 
