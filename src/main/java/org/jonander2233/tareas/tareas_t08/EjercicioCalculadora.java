@@ -10,16 +10,10 @@ public class EjercicioCalculadora {
         JFrame ventana = new JFrame("Calculadora");
         Toolkit tk = Toolkit.getDefaultToolkit();
         Dimension pantalla = tk.getScreenSize();
-        JPanel panel = new JPanel();
-
-        //layouts
-        panel.setLayout(new GridLayout(2,1));
-        JButton boton = new JButton("boton1");
-        JButton boton2 = new JButton("boton2");
-//        JLabel pantallaCalc = new JLabel("pantalla");
-        ventana.add (boton,boton2);
-
-
+        JPanel mainPanel = new JPanel();
+        JPanel contenedorNumYSimbolos = new JPanel();
+        JPanel  numeros= new JPanel();
+        JPanel  simbolos= new JPanel();
 
         //inicio las variables de tamaño y posición de la ventana
         int alto = 800;
@@ -41,6 +35,54 @@ public class EjercicioCalculadora {
         //la ventana ya no se redimensiona
         ventana.setResizable(false);
 
+        // Creamos el panel y establecemos el layout
+        JPanel panel = new JPanel(new GridBagLayout());
+        GridBagConstraints gbc = new GridBagConstraints();
+
+        // Agregamos un componente en la fila superior
+        JLabel label = new JLabel("Contenido de la fila superior");
+        gbc.gridx = 0; // Columna 0
+        gbc.gridy = 0; // Fila 0
+        gbc.weighty = 0.2; // 20% de la altura disponible
+        gbc.fill = GridBagConstraints.BOTH; // Ocupa tanto en vertical como en horizontal
+        panel.add(label, gbc);
+
+        // Creamos un nuevo panel para la fila inferior con otro GridBagLayout
+        JPanel panelInferior = new JPanel(new GridBagLayout());
+        GridBagConstraints gbcInferior = new GridBagConstraints();
+
+        // Agregamos una columna que ocupa el 80% del espacio
+        JLabel label80 = new JLabel("Contenido columna 80%");
+        gbcInferior.gridx = 0; // Columna 0
+        gbcInferior.gridy = 0; // Fila 0
+        gbcInferior.weightx = 0.8; // 80% del ancho disponible
+        gbcInferior.fill = GridBagConstraints.BOTH;
+        panelInferior.add(label80, gbcInferior);
+
+        // Agregamos otra columna que ocupa el 20% del espacio
+        JLabel label20 = new JLabel("Contenido columna 20%");
+        gbcInferior.gridx = 1; // Columna 1
+        gbcInferior.weightx = 0.2; // 20% del ancho disponible
+        panelInferior.add(label20, gbcInferior);
+
+        // Agregamos el panel inferior al panel principal en la fila 1
+        gbc.gridy = 1; // Fila 1
+        gbc.weighty = 0.8; // 80% de la altura disponible
+        panel.add(panelInferior, gbc);
+
+        // Agregamos el panel a la ventana
+//        add(panel);
+
+
+
+
+
+
+
+
+
+
+
         //hago la ventana visible
         ventana.setVisible(true);
 
@@ -55,9 +97,6 @@ public class EjercicioCalculadora {
 
 
 
-//        tk.createImage("https://raja.scene7.com/is/image/Raja/products/calculadora-sobremesa-casio_PDT17590.jpg?template=withpicto410&$image=M_MS80VER_S_ES&$picto=NoPicto&hei=410&wid=410&fmt=jpg&qlt=85,0&resMode=sharp2&op_usm=1.75,0.3,2,0");
-//        ventana.pack();-------------Redimensiona la ventana para ajustarse al tamaño de los layouts y
-//componentes que contiene
 
 
 
