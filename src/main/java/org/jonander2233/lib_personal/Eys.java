@@ -47,6 +47,27 @@ public class Eys {
         lector.nextLine();
         return respuesta;
     }
+
+    public static int leerInt(int min, int max){
+        int respuesta = 0;
+        boolean valido = false;
+        do {
+            if (lector.hasNextInt()) {
+                respuesta = lector.nextInt();
+                if (respuesta >= min && respuesta <= max) {
+                    valido = true;
+                } else {
+                    System.out.println("Por favor, introduce un número dentro del rango (" + min + " - " + max + ").");
+                }
+            } else {
+                System.out.println("Por favor, introduce un número válido.");
+                lector.next(); // Limpiar el buffer de entrada
+            }
+        } while (!valido);
+        lector.nextLine();
+        return respuesta;
+    }
+
     public static int leerInt(){
         int respuesta = Integer.parseInt(lector.nextLine());
         return respuesta;
