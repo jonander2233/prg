@@ -1,5 +1,5 @@
 
-package com.grupoclase.dynamicarray;
+package org.jonander2233.lib_personal;
 
 
 import java.util.Arrays;

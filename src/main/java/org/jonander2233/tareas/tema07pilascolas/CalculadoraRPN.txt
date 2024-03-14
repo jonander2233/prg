@@ -1,14 +1,13 @@
 package org.jonander2233.tareas.tema07pilascolas;
 
-import org.jonander2233.lib_personal.DynamicArray;
-
+import org.jonander2233.lib_personal.Pila;
 public class CalculadoraRPN {
     private String data;
-    private final DynamicArray pila;
+    private final Pila pila;
 
     public CalculadoraRPN(String expresion){
         this.data = expresion;
-        this.pila = new DynamicArray(10);
+        this.pila = new Pila(10);
     }
     public double parse(){
         data = data.trim();

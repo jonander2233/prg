@@ -1,4 +1,4 @@
-package org.jonander2233.tareas.tareas_t08;
+package org.jonander2233.tareas.tema08;
 
 import javax.swing.*;
 import java.awt.*;
