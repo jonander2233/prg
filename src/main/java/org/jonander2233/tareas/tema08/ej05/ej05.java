@@ -36,7 +36,7 @@ public class ej05 {
         boton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //numIntentos--;
+//                numIntentos--;
             }
 
         });
