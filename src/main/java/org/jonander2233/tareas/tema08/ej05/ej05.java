@@ -14,29 +14,35 @@ public class ej05 {
     public static void ejercicio(){
         int width = 1024;        // ancho
         int height = 768;        // alto
-        final int[] numIntentos = {5};
+        int numIntentos = 5;
 
-        JFrame ventana = new JFrame("Hola Swing"); // ventana
-        Container container = ventana.getContentPane();
-        JLabel label1 = new JLabel("Intentos restantes: " + numIntentos[0]);
-        JTextField numIntroducido = new JTextField(10);
+        JFrame frame = new JFrame("Hola Swing"); // ventana
+        frame.setSize(width,height);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+
+
+        JPanel panel = new JPanel();
+        frame.setContentPane(panel);
+        panel.setLayout(new GridLayout(3,1));
+        JLabel texto1 = new JLabel("Intentos restantes :"+ numIntentos);
+        JTextField cuadroDeTexto = new JTextField();
         JButton boton = new JButton("Aceptar");
 
-        container.setLayout(new FlowLayout()); // Establece el diseño del contenedor
 
-        container.add(label1);
-        container.add(numIntroducido);
-        container.add(boton);
-
-        ventana.setSize(width, height);
-        ventana.setVisible(true);
-        ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        panel.add(texto1);
+        panel.add(cuadroDeTexto);
 
         boton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                //numIntentos--;
             }
+
         });
+        panel.add(boton);
+
+        frame.setVisible(true);
+
     }
 }
