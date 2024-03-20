@@ -11,10 +11,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class ej05 {
+        private static int numIntentos = 5;
     public static void ejercicio(){
         int width = 1024;        // ancho
         int height = 768;        // alto
-        int numIntentos = 5;
 
         JFrame frame = new JFrame("Hola Swing"); // ventana
         frame.setSize(width,height);
@@ -30,13 +30,14 @@ public class ej05 {
         JButton boton = new JButton("Aceptar");
 
 
+
         panel.add(texto1);
         panel.add(cuadroDeTexto);
 
         boton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-//                numIntentos--;
+                numIntentos--;
             }
 
         });
