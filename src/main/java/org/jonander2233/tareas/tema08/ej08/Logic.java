@@ -24,7 +24,7 @@ public class Logic {
         String encrypted ="";
         for (int i = 0; i < text.length(); i++) {
             place = random.nextInt(1,27);
-            character = text.charAt(i);
+            character = (int) text.charAt(i);
             intResult = character + place;
             charResult = (char)intResult;
             sb.append(charResult);
