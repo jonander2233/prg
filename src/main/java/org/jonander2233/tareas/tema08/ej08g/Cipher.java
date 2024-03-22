@@ -6,6 +6,18 @@ import java.util.Random;
 public class Cipher {
     private static final String table = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
 
+    public static String encrypt2( byte[] bytes, long seed) {
+        Random random = new Random(seed);
+        StringBuilder sb = new StringBuilder();
+        String c="";
+
+        for (int i = 0; i < bytes.length; i++) {
+            Random random1 = new Random(random.nextInt(1,9999999));
+            c = encrypt(bytes,random1.nextInt());
+            sb.append(c);
+        }
+        return c;
+    }
     public static String encrypt( byte[] bytes, long seed){
         Random random = new Random(seed);
         Base64.Encoder encoder = Base64.getEncoder();
