@@ -25,17 +25,18 @@ public class Game extends JPanel implements Runnable{
     }
     @Override
     public void run() {
+        final double NANOS_BETWEEN_UPDATES = 1_000_000_000 / fpsLimit;
         long currentFrame;
         long lastFrame = currentFrame = System.nanoTime();
         System.out.println("Iniciando hilo...");
         while(!finished){
             currentFrame = System.nanoTime();
-//            if (){
-//                processInput();
-//                update();
-//                draw();
-//                lastFrame = currentFrame;
-//            }
+            if (currentFrame - lastFrame > NANOS_BETWEEN_UPDATES){
+                processInput();
+                update();
+                draw();
+                lastFrame = currentFrame;
+            }
         }
     }
     private void draw(){
