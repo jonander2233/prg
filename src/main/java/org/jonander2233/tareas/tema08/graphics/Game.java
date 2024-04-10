@@ -8,7 +8,7 @@ public class Game extends JPanel implements Runnable{
     private final float fpsLimit;
     private Thread thread;
     private boolean finished;
-    private final Ball ball;
+    private final GameOfLife gameOfLife;
 
     public Game (int width, int height, float fpsLimit){
         this.width = width;
@@ -19,7 +19,7 @@ public class Game extends JPanel implements Runnable{
         setPreferredSize(new Dimension(width,height));
         setBackground(Color.BLACK);
         setFocusable(true);
-        ball = new Ball(10,10,30,10,Color.white,width,height);
+        gameOfLife = new GameOfLife(width,height,10);
     }
     public void start(){
         thread = new Thread(this);
@@ -43,6 +43,7 @@ public class Game extends JPanel implements Runnable{
     }
     private void draw(){
         //TODO: draw
+
         repaint();
 
     }
@@ -51,12 +52,11 @@ public class Game extends JPanel implements Runnable{
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
-        ball.draw(g2);
+        gameOfLife.draw(g2);
     }
 
     private void update(){
         //TODO: update
-        ball.update();
         /*
         personaje.x = personaje.x + velocidad;
         */
