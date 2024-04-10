@@ -42,11 +42,15 @@ public class Ball {
         return Y;
     }
     public void update(){
-        if(X + speedX >= worldWidth  || X + speedX <=0)
+        if(X + speedX >= worldWidth - size  || X + speedX <=0){
+            speedX += speedX * 0.05;
             speedX *= -1;
+        }
         this.X += speedX;
-        if(Y + speedY >= worldHeight  || Y + speedY <=0)
+        if(Y + speedY >= worldHeight  - size|| Y + speedY <=0){
+            speedY += speedY * 0.05;
             speedY *= -1;
+        }
         this.Y += speedY;
 
     }
