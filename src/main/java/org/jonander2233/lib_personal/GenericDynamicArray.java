@@ -191,11 +191,11 @@ public class GenericDynamicArray<T> {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("[ ");
+        sb.append("[");
         for(int i = 0; i < elementCount; i++) {
-            sb.append(data[i]).append("\n");
+            sb.append(data[i]).append(",");
         }
-        sb.append(" ]");
+        sb.append("]");
         return sb.toString();
     }
 }
