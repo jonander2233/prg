@@ -9,7 +9,6 @@ public class Ej02 {
     public static void ex(){
         GenericDynamicArray<Float> array = new GenericDynamicArray<>();
         int cantidadErr=0;
-        System.out.println("ingrese 10 numeros con decimales");
 
         adfasdf(array);
 
@@ -25,11 +24,16 @@ public class Ej02 {
     private static int adfasdf (GenericDynamicArray array)throws InputMismatchException {
         Scanner lector = new Scanner(System.in);
         int cantidadErr=0;
+        float num;
         for (int i = 0; i < 9; i++) {
+            System.out.println("ingrese 10 numeros con decimales");
             boolean valid = false;
+
             do {
                 try {
-                    array.add(lector.nextFloat());
+                    lector.nextLine();
+                    num = lector.nextFloat();
+                    array.add(num);
                     valid = true;
                 }catch (InputMismatchException ime){
                     cantidadErr++;
