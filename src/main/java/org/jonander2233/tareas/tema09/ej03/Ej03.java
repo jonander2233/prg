@@ -2,13 +2,23 @@ package org.jonander2233.tareas.tema09.ej03;
 
 import org.jonander2233.lib_personal.GenericDynamicArray;
 
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
 public class Ej03 {
     public static void ex() {
         GenericDynamicArray<Integer> array = new GenericDynamicArray<>();
         boolean valid = false;
         boolean salir = false;
         int numMayor = 0;
+        System.out.println("ingrese numeros, para salir inserte una letra");
         do {
+            try {
+            salir = metodo(array);
+
+            }catch (InputMismatchException){
+
+            }
 
         } while (!salir);
 
@@ -19,5 +29,11 @@ public class Ej03 {
             }
 
         }
+    }
+    public static boolean metodo (GenericDynamicArray array)throws InputMismatchException {
+        Scanner lector = new Scanner(System.in);
+
+        array.add(lector.nextInt());
+        return true;
     }
 }
