@@ -17,7 +17,11 @@ public class Ej03 {
             salir = metodo(array);
 
             }catch (InputMismatchException){
-
+                if(array.get(0) == null){
+                    System.out.println("no has ingresado ningun numero");
+                }else {
+                    System.out.println(array.toString());
+                }
             }
 
         } while (!salir);
