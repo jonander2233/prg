@@ -14,9 +14,10 @@ public class Ej03 {
         System.out.println("ingrese numeros, para salir inserte una letra");
         do {
             try {
-            salir = metodo(array);
+                metodo(array);
 
             }catch (InputMismatchException ime){
+                salir = true;
                 if(array.get(0) == null){
                     System.out.println("no has ingresado ningun numero");
                 }else {
@@ -34,10 +35,9 @@ public class Ej03 {
 
         }
     }
-    public static boolean metodo (GenericDynamicArray array)throws InputMismatchException {
+    public static void metodo (GenericDynamicArray array)throws InputMismatchException {
         Scanner lector = new Scanner(System.in);
-
         array.add(lector.nextInt());
-        return true;
+        lector.close();
     }
 }
