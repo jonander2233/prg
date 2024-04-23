@@ -5,18 +5,15 @@ import java.util.ArrayList;
 public class Pila<T> implements IPila {
 
     private ArrayList array1;
-    private int tope;
 
     public Pila(int capacidadInicial) {
        array1 = new ArrayList<T>(capacidadInicial);
-       tope = -1;
     }
 
     @Override
 
     public Object push(Object e) {
         array1.add(e);
-        tope++;
         return e;
     }
 
