@@ -9,17 +9,12 @@ public class Main {
         EstadisticasPaciente ep = new EstadisticasPaciente();
         ArrayList<Paciente> arrayP = new ArrayList<>();
 
-        Date fecha1 = new Date(1980,02,12);
-        Date fecha2 = new Date(1990,03,07);
-        Date fecha3 = new Date(1967,03,20);
-        Date fecha4 = new Date(1972,04,20);
-        Date fecha5 = new Date(1960,02,29);
+        Paciente paciente1 = new Paciente("marta",new Date(1980,02,12),'F',1.63,57);
+        Paciente paciente2 = new Paciente("carla",new Date(1990,03,07),'F',1.74,60.5);
+        Paciente paciente3 = new Paciente("lucia",new Date(1967,03,20),'F',1.62,50.8);
+        Paciente paciente4 = new Paciente("pedro",new Date(1972,04,20),'M',1.78,72.5);
+        Paciente paciente5 = new Paciente("julio",new Date(1960,02,29),'M',1.8,85.2);
 
-        Paciente paciente1 = new Paciente("marta",fecha1,'F',1.63,57);
-        Paciente paciente2 = new Paciente("carla",fecha2,'F',1.74,60.5);
-        Paciente paciente3 = new Paciente("lucia",fecha3,'F',1.62,50.8);
-        Paciente paciente4 = new Paciente("pedro",fecha4,'M',1.78,72.5);
-        Paciente paciente5 = new Paciente("julio",fecha5,'M',1.8,85.2);
         arrayP.add(paciente1);
         arrayP.add(paciente2);
         arrayP.add(paciente3);
@@ -27,6 +22,7 @@ public class Main {
         arrayP.add(paciente5);
 
         int[] mm  = ep.majorMenor(arrayP);
+
         Paciente pacienteMayor = arrayP.get(mm[1]);
         Paciente pacienteMenor = arrayP.get(mm[0]);
 
@@ -36,6 +32,7 @@ public class Main {
         int[] ps = ep.pacientsPerSexe(arrayP);
 
         System.out.println("Hombres: " + ps[0] + " Mujeres: "+ ps[1]);
+
         for (int i = 0; i < arrayP.size(); i++) {
             System.out.println("Paciente numero " + (i+1) + ": " + ep.mensajeIMC(arrayP.get(i)));
         }
