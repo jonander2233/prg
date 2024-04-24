@@ -1,5 +1,7 @@
 package org.jonander2233.tareas.tema10.ej05;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Paciente {
@@ -11,10 +13,11 @@ public class Paciente {
     private double alturaEnMetros;
     private double pesoEnKg;
 
-    public Paciente(String nombre, Date fechaNacimiento, char sexo, double alturaEnMetros, double pesoEnKg) {
+    public Paciente(String nombre, String fecha, char sexo, double alturaEnMetros, double pesoEnKg) throws ParseException {
         this.id = ++autoincrement;
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         this.nombre = nombre;
-        this.fechaNacimiento = fechaNacimiento;
+        this.fechaNacimiento = sdf.parse(fecha);
         this.sexo = sexo;
         this.alturaEnMetros = alturaEnMetros;
         this.pesoEnKg = pesoEnKg;
