@@ -41,7 +41,7 @@ public class Main {
                     jugar();
                     break;
                 case 7:
-                    mejoresPuntuaciones();
+//                    mejoresPuntuaciones();
                     break;
 
                 default:
