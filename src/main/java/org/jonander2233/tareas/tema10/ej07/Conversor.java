@@ -4,19 +4,19 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Conversor {
-    private final Map<String,Double> diccionario;
+    private final Map<String,Double> conversor;
 
     public Conversor() {
-        this.diccionario = new HashMap<>();
+        this.conversor = new HashMap<>();
     }
-    public void addWord(String moneda,double precio){
-        diccionario.put(moneda,precio);
+    public void addCoin(String coin,double price){
+        conversor.put(coin,price);
     }
-    public Double getWord(String w1){
-        return diccionario.get(w1);
+    public Double getCoin(String coin){
+        return conversor.get(coin);
     }
-    public boolean existe(String word){
-        boolean aaa = diccionario.containsKey(word);
+    public boolean exists(String coin){
+        boolean aaa = conversor.containsKey(coin);
         return aaa;
     }
 }

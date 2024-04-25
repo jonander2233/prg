@@ -2,17 +2,29 @@ package org.jonander2233.tareas.tema10.ej07;
 
 import org.jonander2233.lib_personal.Eys;
 import org.jonander2233.lib_personal.Menu;
-import org.jonander2233.tareas.tema10.ej06.Traductor;
+import org.jonander2233.tareas.tema10.ej07.Conversor;
 
 import java.util.Scanner;
 
 public class Main {
     public static Scanner scanner = new Scanner(System.in);
-    public static Traductor tr = new Traductor();
+    public static Conversor cv = new Conversor();
     public static void main (String[]args){
         Conversor cv = new Conversor();
-
-        String[] opciones = new String[]{"ver cambio"};
+        cv.addCoin("USD",0.94);
+        cv.addCoin("GBP",1.16);
+        cv.addCoin("INR",0.011);
+        cv.addCoin("AUD",0.61);
+        cv.addCoin("CAD",0.68);
+        cv.addCoin("ARS",0.0011);
+        cv.addCoin("BOB",0.14);
+        cv.addCoin("CLP",0.00098);
+        cv.addCoin("VEZ",0.00024);
+        cv.addCoin("CRC",0.0019);
+        cv.addCoin("CUP",0.039);
+        cv.addCoin("DOP",0.016);
+        cv.addCoin("MXN",0.055);
+        String[] opciones = new String[]{"conversion de moneda"};
 
         boolean valido = false;
 
@@ -32,17 +44,16 @@ public class Main {
         }while (!valido);
     }
 
-    public static void verCambio(){
+    private static void verCambio(){
 
+        String moneda = Eys.imprimirYLeer("introduce la moneda,ej: USD ",3,3);
+        double cantidad = Eys.imprimirYLeerDouble("introduce la cantidad de euros");
 
-
-
-
-        String palabra = Eys.imprimirYLeer("introduce la moneda",1,10);
-        if(tr.existe(palabra)){
-            System.out.println(tr.getWord(palabra));
+        if(cv.exists(moneda)){
+            double res = cantidad * cv.getCoin(moneda);
+            System.out.println(cantidad + " son: " + res + "" + moneda );
         }else{
-            System.out.println("La palabra no existe.");
+            System.out.println("La moneda no existe.");
         }
     }
 }
