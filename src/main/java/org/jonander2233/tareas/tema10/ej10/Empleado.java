@@ -1,5 +1,6 @@
 package org.jonander2233.tareas.tema10.ej10;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -12,6 +13,7 @@ public class Empleado {
     private double sueldo;
 
     public Empleado(String dni, String nombre, String apellidos, Date fechaNac, double sueldo) {
+        hijos = new ArrayList<>();
         this.dni = dni;
         this.nombre = nombre;
         this.apellidos = apellidos;
@@ -42,7 +44,9 @@ public class Empleado {
     public double getSueldo() {
         return sueldo;
     }
-
+    public int cantidadHijos(){
+        return hijos.size();
+    }
     public void setSueldo(double sueldo) {
         this.sueldo = sueldo;
     }

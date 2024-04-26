@@ -1,8 +1,12 @@
 package org.jonander2233.tareas.tema10.ej10;
 
+import org.jonander2233.lib_personal.Eys;
 import org.jonander2233.lib_personal.Menu;
 
+import java.util.ArrayList;
+
 public class Main {
+    ArrayList<Empleado> ep = new ArrayList<>();
     public static void main (String[]args){
         String[] opciones = new String[]{"Nuevo empleado","Nuevo hijo","Modificar sueldo","Borrar empleado","Borrar hijo","Consultas"};
         int seleccion = Menu.mostrar("GESTION EMPLEADOS",opciones,"Salir");
@@ -56,6 +60,11 @@ public class Main {
     }
 
     public static void nuevoEmpleado(){
+        String dni = Eys.imprimirYLeer("Indique el DNI del empleado",9,9);
 
+        String nombre = Eys.imprimirYLeer("Indique nombre del empleado",9,9);
+        String apellidos = Eys.imprimirYLeer("Indique los apellidos del empleado",9,9);
+
+//        Empleado nuevo = new Empleado()
     }
 }
