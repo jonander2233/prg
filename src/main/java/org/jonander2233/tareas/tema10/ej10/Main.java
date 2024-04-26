@@ -13,6 +13,7 @@ public class Main {
                     salir = true;
                     break;
                 case 1:
+                    nuevoEmpleado();
                     break;
                 case 2:
                     break;
