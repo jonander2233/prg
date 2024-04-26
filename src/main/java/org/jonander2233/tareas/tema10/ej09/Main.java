@@ -4,17 +4,23 @@ import org.jonander2233.lib_personal.Eys;
 import org.jonander2233.lib_personal.Menu;
 import org.jonander2233.tareas.tema10.ej08.Diccionario;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.spi.AbstractResourceBundleProvider;
 
 public class Main {
     public static Scanner scanner = new Scanner(System.in);
     public static DiccionarioJuego dj = new DiccionarioJuego();
+    public static int puntuacion=0;
+    private static ArrayList<Jugador> tablero = new ArrayList<>(5);
     public static void main (String[]args){
         String[] opciones = new String[]{"Anadir palabra","Modificar palabra","Eliminar palabra","Consultar palabra","Mostar diccionario","Jugar","Mejores puntuaciones"};
+        Jugador vacio = new Jugador("vacio",0);
+        for (int i = 0; i < 5; i++) {
+            tablero.add(vacio);
+        }
 
         boolean valido = false;
-
         do {
             int seleccion = Menu.mostrar("JUEGO DICCIONARIO",opciones,"Salir.");
 
@@ -41,9 +47,8 @@ public class Main {
                     jugar();
                     break;
                 case 7:
-//                    mejoresPuntuaciones();
+                    mejoresPuntuaciones();
                     break;
-
                 default:
                     break;
             }
@@ -103,18 +108,45 @@ public class Main {
         System.out.println(dj.getWord(palabra));
     }
     private static void mostarDiccionario(){
-        dj.toString();
+        System.out.println(dj.toString());
     }
     private static void jugar(){
+        boolean terminar = false;
         if (dj.size() == 0){
             System.out.println("No hay palabras en el diccionario");
             return;
         }
-        String palabraGanadora = dj.randomWord();
-        String descripcion = dj.getWord(palabraGanadora);
-        String respuesta = Eys.imprimirYLeer(descripcion,1,15);
-        if (respuesta == palabraGanadora){
-
+        System.out.println("Adivina la palabra con la siguiente definicion:\n ");
+        do {
+            String palabraGanadora = dj.randomWord();
+            String descripcion = dj.getWord(palabraGanadora);
+            String respuesta = Eys.imprimirYLeer(descripcion,1,15);
+            if (respuesta.equals(palabraGanadora)){
+                puntuacion++;
+                System.out.println("Palabra acertada!,tu puntuacion es " + puntuacion + "!\n Siguiente definición: ");
+            }else{
+                //pierde
+                terminar = true;
+                System.out.println("pierdes");
+            }
+        }while (!terminar);
+        for (int i = 0; i < 5; i++) {
+            if(puntuacion > tablero.get(i).verPuntuacion()){
+                String nombre = Eys.imprimirYLeer("intrduce tu nombre",1,10);
+                Jugador nuevo = new Jugador(nombre,puntuacion);
+                tablero.add(i,nuevo);
+                puntuacion = 0;
+                break;
+            }
         }
+    }
+    private static void mejoresPuntuaciones(){
+        System.out.println(tablero.get(0).toString());
+        System.out.println(tablero.get(1).toString());
+        System.out.println(tablero.get(2).toString());
+        System.out.println(tablero.get(3).toString());
+        System.out.println(tablero.get(4).toString());
+        System.out.println("\n");
+
     }
 }

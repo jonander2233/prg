@@ -30,16 +30,18 @@ public class DiccionarioJuego {
     }
 
     private int randomPos(){
-        int randomPos = random.nextInt(diccionario.size()+1);
+        int randomPos = random.nextInt(diccionario.size());
         return randomPos;
     }
     public int size(){
         return diccionario.size();
     }
+
     @Override
     public String toString() {
-        return "Diccionario{" +
-                "diccionario=" + diccionario +
-                '}';
+//        for (int i = 0; i < diccionario.size(); i++) {
+//            diccionario.get(i);
+//        }
+        return ""+diccionario;
     }
 }
