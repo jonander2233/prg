@@ -25,7 +25,6 @@ public class Empleado {
         return hijos;
     }
     public Hijo buscarHijo(String nombre){
-        //todo arreglar que no encuentra al hijo
         for (int i = 0; i < hijos.size(); i++) {
             if(hijos.get(i).getNombre().equals(nombre)){
                 return hijos.get(i);
@@ -44,6 +43,10 @@ public class Empleado {
 
     public String getNombre() {
         return nombre;
+    }
+
+    public int getCantidadHijos() {
+        return hijos.size();
     }
 
     public String getApellidos() {

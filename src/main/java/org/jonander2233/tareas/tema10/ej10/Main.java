@@ -14,10 +14,14 @@ public class Main {
     private static String dni;
     private static String nombreHijo;
     public static void main (String[]args){
+
+
         String[] opciones = new String[]{"Nuevo empleado","Nuevo hijo","Modificar sueldo","Borrar empleado","Borrar hijo","Consultas"};
         Empleado test = new Empleado("999999999","joaquin","mendoza",new Date(80,10,22),1200);
         test.addHijo("carlos",new Date(107,10,19));
         empr.nuevoEmpleado(test);
+
+
         boolean salir = false;
         do{
             int seleccion = Menu.mostrar("GESTION EMPLEADOS",opciones,"Salir");
@@ -58,8 +62,10 @@ public class Main {
                     salir = true;
                     break;
                 case 1:
+                    buscarPorDni();
                     break;
                 case 2:
+                    buscarPorNombre();
                     break;
                 case 3:
                     break;
@@ -73,7 +79,7 @@ public class Main {
         }while (!salir);
     }
 
-    private static Empleado verificarEmpleado(){
+    private static Empleado verificarEmpleadoDNI(){
         dni = Eys.imprimirYLeer("Indique el DNI del empleado",8,10);
         Empleado empleado = empr.empleadoExiste(dni);
         if( empleado == null){
@@ -93,8 +99,23 @@ public class Main {
         return null;
     }
 
+    private static void buscarPorNombre(){
+        String nombre = Eys.imprimirYLeer("Introduce el nombre del empleado",1,20);
+        Empleado empleado = empr.buscarEmpleadoNombre(nombre);
+        if(empleado == null){
+            System.out.println("el empleado " + nombre + " no existe!");
+        }else{
+            System.out.println(empr.datosEmpleado(empleado));
+        }
+    }
+
+    private static void buscarPorDni(){
+        Empleado empleado = verificarEmpleadoDNI();
+        System.out.println(empr.datosEmpleado(empleado));
+    }
+
     private static void borrarHijo(){
-        Empleado empleado = verificarEmpleado();
+        Empleado empleado = verificarEmpleadoDNI();
         if(empleado == null){
             return;
         }else {
@@ -109,7 +130,7 @@ public class Main {
     }
 
     private static void borrarEmpleado(){
-        Empleado empleado = verificarEmpleado();
+        Empleado empleado = verificarEmpleadoDNI();
         if(empleado == null){
             return;
         }else {
@@ -120,7 +141,7 @@ public class Main {
     }
 
     private static void nuevoHijo(){
-        Empleado empleado = verificarEmpleado();
+        Empleado empleado = verificarEmpleadoDNI();
         if(empleado != null){
             String nombreHijo = Eys.imprimirYLeer("Indique nombre del hijo",1,20);
             Date fechanacHijo = Eys.imprimirYLeerDate("Indique la fecha de nacimiento de" + nombreHijo,"dd-MM-yyyy");
@@ -129,7 +150,7 @@ public class Main {
     }
 
     private static void modificarSueldo(){
-            Empleado empleado = verificarEmpleado();
+            Empleado empleado = verificarEmpleadoDNI();
             if(empleado != null){
                 double sueldo = Eys.imprimirYLeerDouble("Indique el nuevo sueldo");
                 empr.modificarSueldo(empleado,sueldo);
@@ -138,7 +159,7 @@ public class Main {
     }
 
     public static void nuevoEmpleado(){
-        Empleado empleado = verificarEmpleado();
+        Empleado empleado = verificarEmpleadoDNI();
         if(empleado != null){
             return;
         }

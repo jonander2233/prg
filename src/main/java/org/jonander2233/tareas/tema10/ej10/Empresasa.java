@@ -7,7 +7,7 @@ import java.util.Date;
 import java.util.Objects;
 
 public class Empresasa {
-    private ArrayList<Empleado> ep = new ArrayList<>();
+    private ArrayList<Empleado> listaEmpleados = new ArrayList<>();
     private int sueldo_min = 1134;
 
     public Empresasa() {
@@ -17,9 +17,9 @@ public class Empresasa {
         this.sueldo_min = sueldo_min;
     }
     public Empleado borrarEmpleado(Empleado empleado){
-        for (int i = 0; i < ep.size(); i++) {
-            if(empleado == ep.get(i)){
-                empleado = ep.remove(i);
+        for (int i = 0; i < listaEmpleados.size(); i++) {
+            if(empleado == listaEmpleados.get(i)){
+                empleado = listaEmpleados.remove(i);
                 return empleado;
             }
         }
@@ -34,18 +34,33 @@ public class Empresasa {
     }
 
     public Empleado empleadoExiste(String dni){
-        for (int i = 0; i < ep.size(); i++) {
-            if(dni.equals(ep.get(i).getDni())){
-                return ep.get(i);
+        for (int i = 0; i < listaEmpleados.size(); i++) {
+            if(dni.equals(listaEmpleados.get(i).getDni())){
+                return listaEmpleados.get(i);
             }
         }
         return null;
     }
 
     public void nuevoEmpleado(Empleado empleado){
-        ep.add(empleado);
+        listaEmpleados.add(empleado);
     }
+
     public boolean borrarHijo(Empleado empleado, Hijo hijo){
         return empleado.borrarHijo(hijo);
+    }
+    public Empleado buscarEmpleadoNombre(String nombre){
+        for (int i = 0; i < listaEmpleados.size(); i++) {
+            if(listaEmpleados.get(i).getNombre().equals(nombre)){
+                return listaEmpleados.get(i);
+            }
+        }
+        return null;
+    }
+    public String datosEmpleado(Empleado empleado){
+        return "Empleado " + empleado.getNombre() + " " + empleado.getApellidos() +": \n -DNI: " +
+                empleado.getDni() + "\n -Sueldo: " + empleado.getSueldo() + "\n -Fecha nacimiento: " +
+                empleado.getFechaNac() + "\n -Cantidad de hijos: " + empleado.getCantidadHijos();
+
     }
 }
