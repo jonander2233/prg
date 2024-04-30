@@ -4,24 +4,32 @@ import org.jonander2233.lib_personal.Eys;
 import org.jonander2233.lib_personal.Menu;
 
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Objects;
 
 public class Main {
-    ArrayList<Empleado> ep = new ArrayList<>();
+
     public static void main (String[]args){
+        Empresasa ep = new Empresasa(1134);
         String[] opciones = new String[]{"Nuevo empleado","Nuevo hijo","Modificar sueldo","Borrar empleado","Borrar hijo","Consultas"};
-        int seleccion = Menu.mostrar("GESTION EMPLEADOS",opciones,"Salir");
+        Empleado test = new Empleado("999999999","joaquin","mendoza",new Date(80,10,22),1200);
+        test.addHijo("carlos",new Date(107,10,19));
+        ep.nuevoEmpleado(test);
         boolean salir = false;
         do{
+            int seleccion = Menu.mostrar("GESTION EMPLEADOS",opciones,"Salir");
             switch (seleccion){
                 case 0:
                     salir = true;
                     break;
                 case 1:
-                    nuevoEmpleado();
+                    ep.nuevoEmpleadoEyS();
                     break;
                 case 2:
+                    ep.nuevoHijo();
                     break;
                 case 3:
+                    ep.modificarSueldo();
                     break;
                 case 4:
                     break;
@@ -36,9 +44,9 @@ public class Main {
     }
     private static void menu2(){
         String[] opciones = new String[]{"Buscar por NIF","Buscar por nombre","Buscar por rango de edad","Buscar por rango de sueldo","Buscar por hijos menores de edad"};
-        int seleccion = Menu.mostrar("CONSULTAS EMPLEADOS",opciones,"Volver al menu principal");
         boolean salir = false;
         do{
+            int seleccion = Menu.mostrar("CONSULTAS EMPLEADOS",opciones,"Volver al menu principal");
             switch (seleccion){
                 case 0:
                     salir = true;
@@ -59,12 +67,5 @@ public class Main {
         }while (!salir);
     }
 
-    public static void nuevoEmpleado(){
-        String dni = Eys.imprimirYLeer("Indique el DNI del empleado",9,9);
 
-        String nombre = Eys.imprimirYLeer("Indique nombre del empleado",9,9);
-        String apellidos = Eys.imprimirYLeer("Indique los apellidos del empleado",9,9);
-
-//        Empleado nuevo = new Empleado()
-    }
 }

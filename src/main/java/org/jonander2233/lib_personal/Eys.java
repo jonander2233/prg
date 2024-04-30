@@ -1,6 +1,8 @@
 package org.jonander2233.lib_personal;
+import java.util.Date;
 import java.util.Scanner;
-
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 public class Eys {
     private static Scanner lector = new Scanner(System.in);
@@ -99,6 +101,28 @@ public class Eys {
         return respuestaBool;
     }
     // --------------------------String--------------------------------------------------------
+
+    /**
+     *
+     * @param texto
+     * @param formato formato en tipo string, ej ----> "dd-MM-yyyy"
+     * @return
+     */
+    public static Date imprimirYLeerDate(String texto,String formatoFecha){
+        boolean valido = false;
+        SimpleDateFormat formato = new SimpleDateFormat(formatoFecha);
+        Date fecha= null;
+        do{
+            try {
+                String fechaString = Eys.imprimirYLeer(texto + " en formato: " + formatoFecha,10,10);
+                fecha = formato.parse(fechaString);
+                valido = true;
+            } catch (ParseException e) {
+                System.out.println("Error al convertir la fecha: " + e.getMessage());
+            }
+        }while (!valido);
+        return fecha;
+    }
     public static void imprimir(String texto){
         System.out.println(texto);
     }
