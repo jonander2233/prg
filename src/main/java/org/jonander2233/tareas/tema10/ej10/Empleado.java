@@ -5,7 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 public class Empleado {
-    List<Hijo> hijos;
+    ArrayList<Hijo> hijos;
     private String dni;
     private String nombre;
     private String apellidos;
@@ -21,8 +21,20 @@ public class Empleado {
         this.sueldo = sueldo;
     }
 
-    public List<Hijo> getHijos() {
+    public ArrayList<Hijo> getHijos() {
         return hijos;
+    }
+    public Hijo buscarHijo(String nombre){
+        for (int i = 0; i < hijos.size(); i++) {
+            if(hijos.get(i).getNombre() == nombre){
+                return hijos.get(i);
+            }
+        }
+        return null;
+    }
+    public boolean borrarHijo(Hijo hijo){
+        boolean borrado = hijos.remove(hijo);
+        return borrado;
     }
 
     public String getDni() {
@@ -44,12 +56,15 @@ public class Empleado {
     public double getSueldo() {
         return sueldo;
     }
+
     public int cantidadHijos(){
         return hijos.size();
     }
+
     public void setSueldo(double sueldo) {
         this.sueldo = sueldo;
     }
+
     public void addHijo(String nombre,Date fechaNac){
         hijos.add(new Hijo(nombre,fechaNac));
     }
