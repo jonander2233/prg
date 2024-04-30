@@ -98,6 +98,7 @@ public class Main {
         if(empleado == null){
             return;
         }else {
+
             if(verificarHijo(empleado)==null){
                 return;
             }else{
