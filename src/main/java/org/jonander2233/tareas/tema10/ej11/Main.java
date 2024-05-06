@@ -3,6 +3,7 @@ import org.jonander2233.lib_personal.Menu;
 
 
 public class Main {
+    private static Centro centro = new Centro();
     public static void main(String[]args){
         String[] opciones = new String[]{"Gestion alumnos","Gestion profesores","Gestion asignaturas","Gestion grupos","Gestion aulas","Consultas"};
         boolean salir = false;
@@ -45,7 +46,12 @@ public class Main {
                     salir = true;
                     break;
                 case 1:
-                    Alumno alumnoNuevo = EntradaSalida.agregarAlumnoIO();
+                    if(centro.hayGrupos() && centro.hayAsignaturas()){
+                        Alumno alumnoNuevo = EntradaSalida.agregarAlumno();
+                        centro.addAlumno(alumnoNuevo);
+                    }else{
+                        EntradaSalida.errorAlumno();
+                    }
                     break;
                 case 2:
                     break;

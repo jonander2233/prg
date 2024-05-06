@@ -9,4 +9,23 @@ public class Centro {
     private List<Grupo> grupos;
     private List<Profesor> profesores;
 
+    public Centro() {
+    }
+    public boolean addAlumno(Alumno alumnoNuevo){
+        return true;
+    }
+    public boolean hayGrupos(){
+        if(grupos.isEmpty()){
+            return false;
+        }else{
+            return true;
+        }
+    }
+    public boolean hayAsignaturas(){
+        if(asignaturas.isEmpty()){
+            return false;
+        }else{
+            return true;
+        }
+    }
 }
