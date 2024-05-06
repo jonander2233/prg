@@ -45,6 +45,7 @@ public class Main {
                     salir = true;
                     break;
                 case 1:
+                    Alumno alumnoNuevo = EntradaSalida.agregarAlumnoIO();
                     break;
                 case 2:
                     break;
