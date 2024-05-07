@@ -13,9 +13,14 @@ public class Centro {
     public Centro() {
         alumnos = new ArrayList<Alumno>();
         profesores = new ArrayList<Profesor>();
+        asignaturas = new ArrayList<Asignatura>();
     }
     public boolean addProfesor(Profesor profesorNuevo){
         profesores.add(profesorNuevo);
+        return true;
+    }
+    public boolean addAsignatura(Asignatura asignaturaNuevo){
+        asignaturas.add(asignaturaNuevo);
         return true;
     }
     public boolean addAlumno(Alumno alumnoNuevo){

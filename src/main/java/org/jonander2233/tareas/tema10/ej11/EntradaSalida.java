@@ -9,7 +9,14 @@ public class EntradaSalida {
     private static final int DNI_MIN = 8;
     private static final int SUELDO_MIN = 1050;
     private static final int SUELDO_MAX = 999999999;
+    private static final int IDENTIFICADOR_MIN = 8;
+    private static final int IDENTIFICADOR_MAX = 10;
 
+    public static Asignatura agregarAsignatura() {
+        String id = Eys.imprimirYLeer("Indique el identificador de la asignatura",IDENTIFICADOR_MIN,IDENTIFICADOR_MAX);
+        String nombre = Eys.imprimirYLeer("Dime el nombre de la asignatura",NOMBRE_MIN,NOMBRE_MAX);
+        return new Asignatura(id,nombre);
+    }
     public static Alumno agregarAlumno(){
         String nombre = Eys.imprimirYLeer("Dime el nombre del alumno",NOMBRE_MIN,NOMBRE_MAX);
         return new Alumno(nombre);

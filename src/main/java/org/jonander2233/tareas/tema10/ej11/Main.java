@@ -92,6 +92,8 @@ public class Main {
                     salir = true;
                     break;
                 case 1:
+                    Asignatura asignaturaNueva = EntradaSalida.agregarAsignatura();
+                    centro.addAsignatura(asignaturaNueva);
                     break;
                 case 2:
                     break;
