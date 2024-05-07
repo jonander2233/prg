@@ -1,5 +1,6 @@
 package org.jonander2233.tareas.tema10.ej11;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Centro {
@@ -10,8 +11,15 @@ public class Centro {
     private List<Profesor> profesores;
 
     public Centro() {
+        alumnos = new ArrayList<Alumno>();
+        profesores = new ArrayList<Profesor>();
+    }
+    public boolean addProfesor(Profesor profesorNuevo){
+        profesores.add(profesorNuevo);
+        return true;
     }
     public boolean addAlumno(Alumno alumnoNuevo){
+        alumnos.add(alumnoNuevo);
         return true;
     }
     public boolean hayGrupos(){

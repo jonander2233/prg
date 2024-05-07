@@ -46,20 +46,10 @@ public class Main {
                     salir = true;
                     break;
                 case 1:
-                    if(centro.hayGrupos() && centro.hayAsignaturas()){
                         Alumno alumnoNuevo = EntradaSalida.agregarAlumno();
                         centro.addAlumno(alumnoNuevo);
-                    }else{
-                        EntradaSalida.errorAlumno();
-                    }
                     break;
                 case 2:
-                    break;
-                case 3:
-                    break;
-                case 4:
-                    break;
-                case 5:
                     break;
                 default:
                     break;
@@ -76,6 +66,8 @@ public class Main {
                     salir = true;
                     break;
                 case 1:
+                    Profesor profesorNuevo = EntradaSalida.agregarProfesor();
+                    centro.addProfesor(profesorNuevo);
                     break;
                 case 2:
                     break;
