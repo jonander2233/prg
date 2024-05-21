@@ -1,7 +1,5 @@
 package org.jonander2233.tareas.tema10.test_01;
 
-import org.jonander2233.tareas.IRenderer;
-
 public class MainTest01 {
     public void main(){
 
