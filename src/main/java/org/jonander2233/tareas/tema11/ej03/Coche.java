@@ -6,7 +6,7 @@ public class Coche {
     private String matricula;
     private int velocidad;
     private int marcha;
-    private int[] nMarchas;
+    private int[] nMarchas = new int[6];
 
     public Coche(String matricula) {
         this.matricula = matricula;
@@ -33,8 +33,13 @@ public class Coche {
         }
         return true;
     }
-    protected void cambiarMarcha(int valor){
-
+    protected boolean cambiarMarcha(int valor){
+        if(valor < 0 || valor > nMarchas.length ){
+            return false;
+        } else {
+            marcha = valor;
+        }
+        return true;
     }
 
     @Override
