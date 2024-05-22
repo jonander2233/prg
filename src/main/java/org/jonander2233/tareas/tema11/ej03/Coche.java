@@ -6,7 +6,7 @@ public class Coche {
     private String matricula;
     private int velocidad;
     private int marcha;
-    private int[] nMarchas = new int[6];
+    private int[] nMarchas = new int[]{60,90,120,150,180};
 
     public Coche(String matricula) {
         this.matricula = matricula;
@@ -17,6 +17,7 @@ public class Coche {
         if(valor < 1){
             return false;
         } else {
+
             velocidad += valor;
         }
         return true;
