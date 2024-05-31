@@ -1,9 +1,23 @@
 package org.jonander2233.tareas.tema11.ej04;
 
 import java.awt.*;
+import java.util.Locale;
 
-enum Consumo{A,B,C,D,E,F}
+enum Consumo{
+    A('A'),B('B'),C('C'),D('D'),E('E'),F('F');
+    private final char letra;
+    Consumo(char letra){
+        this.letra = letra;
+    }
+    public char getLetra(){
+        return letra;
+    }
+}
+
+
 enum Colores{BLANCO,NEGRO,ROJO,AZUL,GRIS}
+
+
 public class Electrodomestico {
     private static final double PRECIO_BASE = 100;
     private static final Colores COLOR_POR_DEFECTO = Colores.BLANCO;
@@ -15,15 +29,19 @@ public class Electrodomestico {
     protected Consumo consumo;
     protected double peso;
 
-    public Electrodomestico(double precio, Colores color, Consumo consumo, double peso) {
+    public Electrodomestico(double precio, String color, char consumo, double peso) {
         this.precio = precio;
-        this.color = color;
-        this.consumo = consumo;
+        String consString = String.valueOf(consumo);
+        consString = consString.toUpperCase();
+
         this.peso = peso;
+        comprobarConsumoEnergetico(consumo);
+        comprobarColor(color);
+
     }
 
     public Electrodomestico() {
-        this(PRECIO_BASE,COLOR_POR_DEFECTO,CONSUMO_POR_DEFECTO,PESO_POR_DEFECTO);
+//        this(PRECIO_BASE,COLOR_POR_DEFECTO,CONSUMO_POR_DEFECTO,PESO_POR_DEFECTO);
     }
 
     public Electrodomestico(double precio, double peso) {
@@ -54,4 +72,5 @@ public class Electrodomestico {
     public void comprobarColor (String color){
 
     }
+
 }
