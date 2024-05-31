@@ -5,23 +5,15 @@ import java.awt.*;
 enum Consumo{A,B,C,D,E,F}
 enum Colores{BLANCO,NEGRO,ROJO,AZUL,GRIS}
 public class Electrodomestico {
-    private double PRECIO_BASE = 100;
-    private Colores COLOR_POR_DEFECTO = Colores.BLANCO;
-    private Consumo CONSUMO_POR_DEFECTO = Consumo.F;
-    private double PESO_POR_DEFECTO = 5;
+    private static final double PRECIO_BASE = 100;
+    private static final Colores COLOR_POR_DEFECTO = Colores.BLANCO;
+    private static final Consumo CONSUMO_POR_DEFECTO = Consumo.F;
+    private static final double PESO_POR_DEFECTO = 5;
 
-    protected double precio = PRECIO_BASE;
-    protected Colores color = COLOR_POR_DEFECTO;
-    protected Consumo consumo = CONSUMO_POR_DEFECTO;
-    protected double peso = PESO_POR_DEFECTO;
-
-    public Electrodomestico() {
-    }
-
-    public Electrodomestico(double precio, double peso) {
-        this.precio = precio;
-        this.peso = peso;
-    }
+    protected double precio;
+    protected Colores color;
+    protected Consumo consumo;
+    protected double peso;
 
     public Electrodomestico(double precio, Colores color, Consumo consumo, double peso) {
         this.precio = precio;
@@ -29,6 +21,16 @@ public class Electrodomestico {
         this.consumo = consumo;
         this.peso = peso;
     }
+
+    public Electrodomestico() {
+        this(PRECIO_BASE,COLOR_POR_DEFECTO,CONSUMO_POR_DEFECTO,PESO_POR_DEFECTO);
+    }
+
+    public Electrodomestico(double precio, double peso) {
+        this.precio = precio;
+        this.peso = peso;
+    }
+
 
     public double getPrecio() {
         return precio;
@@ -45,6 +47,7 @@ public class Electrodomestico {
     public double getPeso() {
         return peso;
     }
+
     public void comprobarConsumoEnergetico (char letra){
 
     }
