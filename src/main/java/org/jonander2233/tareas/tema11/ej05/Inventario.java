@@ -1,6 +1,7 @@
 package org.jonander2233.tareas.tema11.ej05;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 public class Inventario {
@@ -20,6 +21,7 @@ public class Inventario {
         this.inventario = new ArrayList<>();
     }
     public boolean addItem(Item item){
+
         return false;
     }
     public void replaceItem(){
