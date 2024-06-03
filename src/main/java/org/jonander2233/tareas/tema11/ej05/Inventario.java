@@ -23,7 +23,9 @@ public class Inventario {
     public boolean addItem(Item item){
         for (int i = 0; i < inventario.size(); i++) {
             if(inventario.get(i).getNombre().equals(item.getNombre())){
-                if(inventario.get(i).getCantidad() + item.getCantidad() > inventario.get(i).)
+                if(inventario.get(i).getCantidad() + item.getCantidad() > inventario.get(i).getMax()){
+
+                }
             }
 
         }
