@@ -25,9 +25,13 @@ public class Inventario {
             if(inventario.get(i).getNombre().equals(item.getNombre())){
                 if(inventario.get(i).getCantidad() + item.getCantidad() > inventario.get(i).getMax()){
 
+                //todo hacer que funcione
+
+                }else{
+                    item.addCantidad(inventario.get(i).getCantidad());
+                    inventario.set(i,item);
                 }
             }
-
         }
         return false;
     }
