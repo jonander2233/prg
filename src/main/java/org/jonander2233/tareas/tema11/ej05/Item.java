@@ -18,6 +18,7 @@ public class Item {
     public int getMax(){
         return this.tipoObjeto.getCantidad();
     }
+
     public int getCantidad(){
         return cantidad;
     }

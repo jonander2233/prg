@@ -20,12 +20,11 @@ public class Inventario {
         this.CANT_CASILLAS = capacidad;
         this.inventario = new ArrayList<>();
     }
-    public boolean addItem(Item item){
+    public int addItem(Item item){
         for (int i = 0; i < inventario.size(); i++) {
             if(inventario.get(i).getNombre().equals(item.getNombre())){
                 if(inventario.get(i).getCantidad() + item.getCantidad() > inventario.get(i).getMax()){
-
-                //todo hacer que funcione
+                //todo: hacer que funcione
 
                 }else{
                     item.addCantidad(inventario.get(i).getCantidad());
@@ -33,7 +32,7 @@ public class Inventario {
                 }
             }
         }
-        return false;
+        return -1;
     }
     public void replaceItem(){
 
