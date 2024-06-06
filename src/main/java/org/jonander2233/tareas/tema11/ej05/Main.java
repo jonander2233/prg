@@ -74,9 +74,21 @@ public class Main {
         int cantidad = Eys.imprimirYLeerInt("Cuantos quieres añadir?",1,100);
         return cantidad;
     }
-    private static void cantidadBucle(Item item,int cantidad){
-        for (int i = 0; i < cantidad; i++) {
-            inventario.addItem(item);
+
+    private static void cantidadBucle(Item item,int cantidad){ /*cantidad =33 max 10*/
+        Item item1 = new Item(item);
+        while (cantidad != 0){
+            if(cantidad > item.getCapacidadMax()){
+                cantidad = cantidad - item.getCapacidadMax(); /*cantidad =3*/
+                if(item.getCantidad() != item.getCapacidadMax()){
+                    item.addCantidad(item.getCapacidadMax());
+                }
+                inventario.addItem(item);
+            } else {
+                item1.addCantidad(cantidad);
+                inventario.addItem(item1);
+                cantidad = 0;
+            }
         }
     }
 
