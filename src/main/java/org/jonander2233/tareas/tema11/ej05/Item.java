@@ -1,12 +1,14 @@
 package org.jonander2233.tareas.tema11.ej05;
 
 public class Item {
+    private int id=0;
     private TipoObjeto tipoObjeto;
     private String nombre;
     private int cantidad;
 
 
     public Item(TipoObjeto tipoObjeto, String nombre, int cantidad) {
+        ++id;
         this.tipoObjeto = tipoObjeto;
         this.nombre = nombre;
         if(cantidad <= tipoObjeto.getCapacidad()){
@@ -17,6 +19,7 @@ public class Item {
     }
 
     public Item(Item item) {
+        this.id = item.id;
         this.tipoObjeto = item.tipoObjeto;
         this.cantidad = item.cantidad;
         this.nombre = item.nombre;

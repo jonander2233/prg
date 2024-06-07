@@ -21,21 +21,24 @@ public class Inventario {
         this.inventario = new ArrayList<>();
     }
 
-    public Item buscarItem(Item item){
-        for (int i = 0; i < inventario.size(); i++) {
-            if(inventario.get(i).getNombre().equals(item.getNombre())){
-                    return inventario.get(i);
+    public Item buscarEspacio(Item item){
+        for (Item value : inventario) {
+            if (value.getNombre().equals(item.getNombre())) {
+                if (value.getCantidad() < value.getCapacidadMax()) {
+                    return value;
+                }
+
             }
         }
         return null;
     }
     public int addItem(Item item){
-        Item item_inventario = buscarItem(item);
+//        Item item_inventario = buscarItem(item);
         int restante = -1;
-        if(item.getCantidad() + item_inventario.getCantidad() > item.getCapacidadMax()){
+//        if(item.getCantidad() + item_inventario.getCantidad() > item.getCapacidadMax()){
 
-        }
-
+//        }
+        return -1;
     }
 
     public void replaceItem(){
