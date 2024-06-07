@@ -33,10 +33,18 @@ public class Item {
     public int getCantidad(){
         return cantidad;
     }
+
     public int getCapacidadMax(){
         return tipoObjeto.getCapacidad();
     }
 
+    public int subCantidad(int cantidad){
+        if (this.cantidad > cantidad){
+            this.cantidad = this.cantidad - cantidad;
+            return this.cantidad;
+        }
+        return -1;
+    }
 
     public String getNombre(){
         return this.nombre;
