@@ -28,17 +28,14 @@ public class Test {
 
     public static void main(String[] args) {
         Partido partido = new Partido();        //se crea el partido
-        Estadio estadio = new Estadio(1,1,5);        //se crea el estadio
+        Estadio estadio = new Estadio(4,1,5);        //se crea el estadio
 //        estadio.verAsientos();      //se imprimen los asientos del estadio
         Zona zona1 = estadio.getZona(1);
-        zona1.venderAsiento();
-        zona1.venderAsiento();
-        zona1.venderAsiento();
-        zona1.venderAsiento();
-        zona1.venderAsiento();
-        zona1.venderAsiento();
-        zona1.verAsientos();
-
+        for (int i = 0; i < 2; i++) {
+            zona1.venderAsiento();
+        }
+        int[]test = zona1.venderAsiento();
+        System.out.println(test[0]+" "+ test[1]);
 
 
 
