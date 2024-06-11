@@ -4,13 +4,24 @@ import java.util.HashSet;
 import java.util.Objects;
 
 public class Asiento {
-    private int id=0;
+    private static int contador=0;
+    private int id;
     private final String nombre = "asiento " + id;
+    private boolean vendido = false;
 
     public Asiento() {
-        ++id;
+        this.id = ++contador;
+    }
+    public void vender(){
+        vendido = true;
     }
 
+    public int getId() {
+        return id;
+    }
+    public boolean isVendido(){
+        return vendido;
+    }
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
