@@ -104,11 +104,50 @@ public class Eys {
 
     /**
      *
-     * @param texto
-     * @param formato formato en tipo string, ej ----> "dd-MM-yyyy"
-     * @return
+     * @param texto texto que será el titulo del mini menu
+     * @param formatoFecha formato en tipo string, ej ----> "dd-MM-yyyy"
+     * @return retorna un Date
      */
     public static Date imprimirYLeerDate(String texto,String formatoFecha){
+        boolean valido = false;
+        SimpleDateFormat formato = new SimpleDateFormat(formatoFecha);
+        Date fecha= null;
+        do{
+            try {
+                String fechaString = Eys.imprimirYLeer(texto + " en formato: " + formatoFecha,10,10);
+                fecha = formato.parse(fechaString);
+                valido = true;
+            } catch (ParseException e) {
+                System.out.println("Error al convertir la fecha: " + e.getMessage());
+            }
+        }while (!valido);
+        return fecha;
+    }
+
+
+    /**
+     *
+     * @param texto texto que será el titulo del mini menu
+     * @param enumClass el enumerado que quieres imprimir como opciones Titulo.class
+     * @return Enum Titulo
+     * @param <T>
+     */
+    public static <T extends Enum<T>> T imprimirYLeerEnum(String texto,Class<T> enumClass) {
+        String[] opcionesString = new String[enumClass.getEnumConstants().length];
+        for (int i = 0; i < enumClass.getEnumConstants().length; i++) {
+            opcionesString[i] = enumClass.getEnumConstants()[i].toString();
+        }
+        int respuesta = Menu.mostrar(texto,opcionesString);
+        return enumClass.getEnumConstants()[respuesta-1];
+    }
+
+
+    /**
+     * @param texto el texto que se va a imprimir
+     * @return un Date
+     */
+    public static Date imprimirYLeerDate(String texto){
+        String formatoFecha = "dd-MM-yyyy";
         boolean valido = false;
         SimpleDateFormat formato = new SimpleDateFormat(formatoFecha);
         Date fecha= null;

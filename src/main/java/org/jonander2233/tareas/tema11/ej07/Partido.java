@@ -1,4 +1,7 @@
 package org.jonander2233.tareas.tema11.ej07;
+
+import java.util.Date;
+
 enum Afluencia{
     BAJA_AFLUENCIA(0.75),MEDIA_AFLUENCIA(1),ALTA_AFLUENCIA(1.30);
     private final double porcentaje;
@@ -12,11 +15,17 @@ enum Afluencia{
 public class Partido {
     private int id=0;
     private Afluencia afluencia;
-    private String nombre;
+    private String nombreVisitante;
+    private String nombreLocal;
+    private Date fechaPartido;
 
-    public Partido(Afluencia afluencia, String nombre) {
+    public Partido(Afluencia afluencia, String nombreVisitante, String nombreLocal, Date fechaPartido) {
         id++;
         this.afluencia = afluencia;
-        this.nombre = nombre;
+        this.nombreVisitante = nombreVisitante;
+        this.nombreLocal = nombreLocal;
+        this.fechaPartido = fechaPartido;
     }
+
+
 }
