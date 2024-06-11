@@ -25,6 +25,16 @@ public class Fila {
             System.out.printf("%sasiento " + (i+1) +" id: " + filaAsientos.get(i).getId() +" isVendido: "+filaAsientos.get(i).isVendido() + "%s\n", Colorinchis.CYAN, Colorinchis.RESET);
         }
     }
+    public int venderAsiento(){
+        //Todo: Respasar Logica
+        for (int i = 0; i < filaAsientos.size(); i++) {
+            if(!filaAsientos.get(i).isVendido()){
+                filaAsientos.get(i).vender();
+                return filaAsientos.get(i).getId();
+            }
+        }
+        return -1;
+    }
     public int getId() {
         return id;
     }

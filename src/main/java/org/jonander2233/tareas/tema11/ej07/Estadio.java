@@ -30,7 +30,22 @@ public class Estadio {
     public Estadio(){
         this(N_ZONAS,N_ZONAS_VIP,N_ASIENTOS_Y_FILAS);
     }
-
+    public Zona getZona(int num){
+        return zonas.get(num);
+    }
+    //    public int[] venderAsiento(){
+//        for (int i = 0; i < zonas.size(); i++) {
+//            if(zonas.get(i).getId())
+//
+//
+//
+//
+//
+//
+//
+//        }
+//        int[] asiento = new int[3];
+//    }
     public void verAsientos(){
         for (int i = 0; i < zonas.size(); i++) {
             if(zonas.get(i).getCategoria() == Categoria.NORMAL){

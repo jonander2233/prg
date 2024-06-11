@@ -32,6 +32,18 @@ public class Zona {
             filas.get(i).verAsientos();
         }
     }
+    public int[] venderAsiento(){
+        //Todo: Respasar Logica
+        int idAsientoVendido;
+        int idFilaVendida = this.id;
+        for (int i = 0; i < filas.size(); i++) {
+            if((idAsientoVendido = filas.get(i).venderAsiento()) != -1){
+                int[] asiento = new int[]{idAsientoVendido,idFilaVendida};
+                return asiento;
+            }
+        }
+        return null;
+    }
 
     public int getId() {
         if(this.categoria == Categoria.NORMAL){

@@ -24,12 +24,32 @@ enum Colorinchis {
 
 public class Test {
 
-    public static boolean codigoTest=true; //imprime la creacion de los asientos,zonas y filas
+    public static boolean codigoTest=false; //imprime la creacion de los asientos,zonas y filas
 
     public static void main(String[] args) {
         Partido partido = new Partido();        //se crea el partido
-        Estadio estadio = new Estadio(15,5,5);        //se crea el estadio
-        estadio.verAsientos();      //se imprimen los asientos del estadio
+        Estadio estadio = new Estadio(1,1,5);        //se crea el estadio
+//        estadio.verAsientos();      //se imprimen los asientos del estadio
+        Zona zona1 = estadio.getZona(1);
+        zona1.venderAsiento();
+        zona1.venderAsiento();
+        zona1.venderAsiento();
+        zona1.venderAsiento();
+        zona1.venderAsiento();
+        zona1.venderAsiento();
+        zona1.verAsientos();
+
+
+
+
+
+
+
+
+
+
+
+
 //        Evento evento = new Evento(estadio,partido);        //se crea el evento con el estadio y el partido
 //        EntradaNormal entrada = evento.venderEntrada();
     }
