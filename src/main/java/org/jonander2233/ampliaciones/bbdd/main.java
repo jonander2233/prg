@@ -8,7 +8,8 @@ public class main {
         final int PORT = 3306;
         final String DB_NAME = "frases";
         String url = "jdbc:mysql://"+ HOST +":"+ PORT +"/" + DB_NAME;
-        try (Connection con = DriverManager.getConnection(url)){
+
+        try (Connection con = DriverManager.getConnection(url,"frases","frases")){
             PreparedStatement ps = con.prepareStatement("SELECT id,frase FROM frase");
             ResultSet rs = ps.executeQuery();
             while (rs.next()){
