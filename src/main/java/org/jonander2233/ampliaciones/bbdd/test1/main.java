@@ -1,4 +1,4 @@
-package org.jonander2233.ampliaciones.bbdd;
+package org.jonander2233.ampliaciones.bbdd.test1;
 
 import java.sql.*;
 
