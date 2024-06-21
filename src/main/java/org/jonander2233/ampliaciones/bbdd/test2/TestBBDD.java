@@ -15,6 +15,7 @@ public class TestBBDD {
 
         try(Connection conexion = DriverManager.getConnection(url,"prg","1234")) {
             System.out.println("conexion extablecida");
+
             menu(conexion);
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -31,20 +32,21 @@ public class TestBBDD {
                     salir = true;
                     break;
                 case 1:
-                    caso1(conexion);
+                    insertar(conexion);
                     break;
                 case 2:
-                    caso2(conexion);
+                    ver(conexion);
                     break;
                 case 3:
-                    sinHacer();
+                    borrar(conexion);
                     break;
                 default:
                     break;
             }
         } while (!salir);
     }
-    private static void caso1(Connection conexion) throws SQLException {
+
+    private static void insertar(Connection conexion) throws SQLException {
         String nombre = Eys.imprimirYLeer("Introduce tu nombre",2,10);
         String nombre2 = Eys.imprimirYLeer("Introduce tu segundo nombre",2,10);
         String apellido = Eys.imprimirYLeer("Introduce tu apellido",2,10);
@@ -66,7 +68,7 @@ public class TestBBDD {
         }
     }
 
-    private static void caso2(Connection conexion) throws SQLException {
+    private static void ver(Connection conexion) throws SQLException {
         String[] opciones = new String[]{"ver todo","ver un id","ver nombre"};
         int respuesta = Menu.mostrar("VER",opciones,"volver");
         switch (respuesta) {
@@ -76,29 +78,10 @@ public class TestBBDD {
                 verTodo(conexion);
                 break;
             case 2:
-                sinHacer();
+                verId(conexion);
                 break;
             case 3:
                 sinHacer();
-                break;
-            default:
-                break;
-        }
-    }
-
-    private static void caso3(){
-        String[] opciones = new String[]{"","","",""};
-        int respuesta = Menu.mostrar("",opciones,"volver");
-        switch (respuesta) {
-            case 0:
-                return;
-            case 1:
-                break;
-            case 2:
-                break;
-            case 3:
-                break;
-            case 4:
                 break;
             default:
                 break;
@@ -114,10 +97,76 @@ public class TestBBDD {
             String apellido = rs.getString("apellido_1");
             String apellido2 = rs.getString("apellido_2");
             String correo = rs.getString("correo");
-            String resultado = "Usuario " + id + " = " + nombre +" "+ nombre2 +" "+ apellido +" "+ apellido2 +" "+ correo;
+            String resultado = "Usuario " + id + " = " + nombre +" "+ nombre2 +" "+ apellido +" "+ apellido2 +" con correo: "+ correo;
             System.out.println(resultado);
         }
     }
+    private static void verId(Connection conexion) throws SQLException {
+        int id = Eys.imprimirYLeerInt("Introduce el id",1,Integer.MAX_VALUE);
+        PreparedStatement ps = conexion.prepareStatement("SELECT * FROM usuarios WHERE id = ?");
+        ps.setInt(1,id);
+        ResultSet rs = ps.executeQuery();
+        if (rs.next()) {
+            int id_res = rs.getInt("id");
+            String nombre = rs.getString("nombre");
+            String nombre2 = rs.getString("nombre_2");
+            String apellido = rs.getString("apellido_1");
+            String apellido2 = rs.getString("apellido_2");
+            String correo = rs.getString("correo");
+            String resultado = "Usuario " + id_res + " = " + nombre +" "+ nombre2 +" "+ apellido +" "+ apellido2 +" con correo: "+ correo;
+            System.out.println(resultado);
+        }else {
+            System.out.println("no se encontró el usuario con id: " + id);
+        }
+    }
+
+
+    private static void borrar(Connection conexion) throws SQLException {
+        boolean borrar;
+        String[] opciones = new String[]{"borrar por id","borrar por nombre","borrar por correo"};
+        int respuesta = Menu.mostrar("BORRAR",opciones,"volver");
+        switch (respuesta) {
+            case 0:
+                return;
+            case 1:
+                int id = Eys.imprimirYLeerInt("Introduce el id del usuario que desea borrar",1,Integer.MAX_VALUE);
+                borrar = Eys.ImprimirYleerCharSN("Seguro que desea borrar el id " + id + "?");
+                if(borrar){
+                    PreparedStatement ps = conexion.prepareStatement("DELETE FROM usuarios WHERE id = ?");
+                    ps.setInt(1, id);
+                    int filasAfectadas = ps.executeUpdate();
+                    if(filasAfectadas > 0){
+                        System.out.println("Se ha borrado el ID: " + id);
+                    } else {
+                        System.out.println("No se encontró el ID: " + id + " en la tabla.");
+                    }
+                }
+                break;
+            case 2:
+                String nombre = Eys.imprimirYLeer("Introduce el nombre del usuario que desea borrar",1,Integer.MAX_VALUE);
+                String apellido = Eys.imprimirYLeer("Introduce el primer apellido del usuario que desea borrar",1,Integer.MAX_VALUE);
+                borrar = Eys.ImprimirYleerCharSN("Seguro que desea borrar el usuario?");
+                if(borrar){
+                    PreparedStatement ps = conexion.prepareStatement("DELETE FROM usuarios WHERE nombre = ? AND apellido_1 = ?");
+                    ps.setString(1, nombre);
+                    ps.setString(2,apellido);
+                    int filasAfectadas = ps.executeUpdate();
+                    if(filasAfectadas > 0){
+                        System.out.println("Se ha borrado el usuario "+ nombre + " "+ apellido);
+                    } else {
+                        System.out.println("No se encontró el usuario "+ nombre + " "+ apellido);
+                    }
+                }
+                break;
+            case 3:
+                break;
+            case 4:
+                break;
+            default:
+                break;
+        }
+    }
+
     private static void sinHacer(){
         System.out.println("falta programar xd");
     }
