@@ -3,7 +3,7 @@ package org.jonander2233.tareas.tema12.ej05;
 import java.io.File;
 import java.io.IOException;
 
-public class GestionArchivos {
+public class GestionArchivos1 {
 
     public static boolean crearArchivo(String directorio,String archivo) throws IOException {
         File dir = new File(directorio);
@@ -40,8 +40,21 @@ public class GestionArchivos {
         }
     }
     public static void verInfo(String directorio,String archivo){
-
+        File dir = new File(directorio);
+        if(dir.exists() && dir.isDirectory()){
+            File file = new File(dir,archivo);
+            if(file.exists()){
+                String tipo;
+                if(file.isDirectory())
+                    tipo = "D";
+                else
+                    tipo = "A";
+                System.out.println(
+                        file.getName() + " " + file.getAbsolutePath() + "\nPermisos de escritura: " + file.canWrite() + "\nPermisos de lectura: " + file.canRead()
+                                +"\nTamano: "+ file.length() + "\ntipo: " + tipo
+                );
+            }
+        }
     }
-
 }
 
