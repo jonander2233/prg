@@ -58,9 +58,9 @@ public class GestionArchivos {
             }
         }
     }
-    public static void leerContenido (String ruta) throws FileNotFoundException {
-        FileReader texto = new FileReader(ruta);
-
+    public static void leerContenido (String ruta) throws IOException {
+        FileReader lector = new FileReader(ruta);
+        
     }
 }
 
